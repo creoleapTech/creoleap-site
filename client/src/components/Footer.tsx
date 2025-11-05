@@ -1,22 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { toast } from 'sonner';
+import  {useEffect, useRef } from 'react';
+// import { toast } from 'sonner';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const containerRef = useRef(null);
-  const particlesRef = useRef([]);
+  // const [email, setEmail] = useState('');
+const containerRef = useRef<HTMLDivElement | null>(null);
+const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const handleSubscribe = (event) => {
-    event.preventDefault();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error('Please enter a valid email address');
-      return;
-    }
 
-    toast.success(`Thank you for subscribing, ${email}!`);
-    setEmail('');
-  };
+  // const handleSubscribe = (event: { preventDefault: () => void; }) => {
+  //   event.preventDefault();
+  //   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  //     toast.error('Please enter a valid email address');
+  //     return;
+  //   }
+
+  //   toast.success(`Thank you for subscribing, ${email}!`);
+  //   setEmail('');
+  // };
 
   useEffect(() => {
     const loadGSAP = async () => {
@@ -50,7 +51,7 @@ const Footer = () => {
     const { gsap } = window;
     const containerRect = containerRef.current.getBoundingClientRect();
 
-    particlesRef.current.forEach((particle, i) => {
+    particlesRef.current.forEach((particle) => {
       if (particle) {
         gsap.set(particle, {
           x: Math.random() * containerRect.width,
@@ -80,7 +81,8 @@ const Footer = () => {
         {Array.from({ length: 100 }, (_, i) => (
           <div
             key={`particle-${i}`}
-            ref={el => particlesRef.current[i] = el}
+           ref={(el) => { particlesRef.current[i] = el; }}
+
             className="absolute w-1.5 h-1.5 bg-cyan-300 rounded-full opacity-30"
             style={{ boxShadow: '0 0 5px rgba(6, 182, 212, 0.5)' }}
           />

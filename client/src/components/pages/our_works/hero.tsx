@@ -1,4 +1,3 @@
-import { Icon } from "@iconify/react"
 import { useRef, useState } from "react"
 
 interface GalleryItem {

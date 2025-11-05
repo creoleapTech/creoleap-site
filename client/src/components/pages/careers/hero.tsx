@@ -158,7 +158,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
           <p className="text-gray-600 text-center mb-8">
             Ready to take the next step? Fill out the form below and let's create the future together.
           </p>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={()=>{handleSubmit}} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-gray-600 font-medium mb-2">
                 Full Name
@@ -228,7 +228,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
               </label>
               <textarea
                 id="message"
-                rows="5"
+              rows={5}
                 required
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
                 placeholder="Tell us about your passion and how you can contribute..."

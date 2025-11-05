@@ -6,7 +6,7 @@ const info_resend = new Resend(process.env.RESEND_API_KEY_INFO);
 
 const server = Bun.serve({
   port: 3001,
-  async fetch(req) {
+  async fetch(req: { method: string; url: string | URL; json: () => any; }) {
     // Enable CORS
     const corsHeaders = {
       'Access-Control-Allow-Origin': '*',

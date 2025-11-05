@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 
 const Partners = () => {
   const [isPaused, setIsPaused] = useState(false);
-  const scrollRef = useRef(null);
+const scrollRef = useRef<HTMLDivElement | null>(null);
 
   // Partner logos with names
   const partners = [
@@ -76,7 +76,7 @@ const Partners = () => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let animationId;
+    let animationId: number;
     let scrollPosition = 0;
     const scrollSpeed = 0.8; // Pixels per frame
 

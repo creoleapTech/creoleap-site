@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Labs() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredLab, setHoveredLab] = useState(null);
+const [hoveredLab, setHoveredLab] = useState<number | null>(null);
+
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function Labs() {
     }
   ];
 
-  const handleExploreClick = (path) => {
+  const handleExploreClick = (path: string) => {
     window.location.href = `${path}`;
   };
 

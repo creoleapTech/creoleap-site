@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
 
 const Testimonials = () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const scrollRef = useRef(null);
+  // const [isPaused, setIsPaused] = useState(false);
+const scrollRef = useRef<HTMLDivElement | null>(null);
+
 
   const testimonials = [
     {
@@ -63,25 +64,25 @@ const Testimonials = () => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let animationId;
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5; // Pixels per frame
+    let animationId: number;
+    // let scrollPosition = 0;
+    // const scrollSpeed = 0.5; // Pixels per frame
 
     const animate = () => {
-      if (!isPaused) {
-        scrollPosition += scrollSpeed;
+      // if (!isPaused) {
+      //   scrollPosition += scrollSpeed;
         
-        // Reset position seamlessly when we've scrolled through one set
-        const cardWidth = 384; // w-96 = 384px
-        const gap = 32; // gap-8 = 32px
-        const totalWidth = (cardWidth + gap) * testimonials.length;
+      //   // Reset position seamlessly when we've scrolled through one set
+      //   const cardWidth = 384; // w-96 = 384px
+      //   const gap = 32; // gap-8 = 32px
+      //   const totalWidth = (cardWidth + gap) * testimonials.length;
         
-        if (scrollPosition >= totalWidth) {
-          scrollPosition = 0;
-        }
+      //   if (scrollPosition >= totalWidth) {
+      //     scrollPosition = 0;
+      //   }
         
-        scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
-      }
+      //   scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+      // }
       animationId = requestAnimationFrame(animate);
     };
 
@@ -92,7 +93,7 @@ const Testimonials = () => {
         cancelAnimationFrame(animationId);
       }
     };
-  }, [isPaused, testimonials.length]);
+  }, [ testimonials.length]);
 
   return (
     <div className="md:pb-10 px-4 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 overflow-hidden">
@@ -195,12 +196,12 @@ const Testimonials = () => {
         </div>
 
         {/* Pause Indicator */}
-        {isPaused && (
+        {/* {isPaused && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/75 text-white px-4 py-2 rounded-full text-sm font-medium z-20 flex items-center gap-2 backdrop-blur-sm">
             <Icon icon="mdi:pause-circle" className="text-lg" />
             Paused - Hover to explore
           </div>
-        )}
+        )} */}
       </div>
 
 

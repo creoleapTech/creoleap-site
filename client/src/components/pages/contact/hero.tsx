@@ -1,88 +1,88 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 
 export default function ContactPage() {
-  const [activeSupport, setActiveSupport] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  // const [activeSupport, setActiveSupport] = useState(0);
+  // const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-    const interval = setInterval(() => {
-      setActiveSupport((prev) => (prev + 1) % supportOptions.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   setIsVisible(true);
+  //   const interval = setInterval(() => {
+  //     setActiveSupport((prev) => (prev + 1) % supportOptions.length);
+  //   }, 3000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const contactInfo = [
-    {
-      icon: "mdi:map-marker",
-      title: "Corporate Office",
-      details: ["Creoleap Technologies Private Limited", "29/8/2A, First Floor", "S.T.Hindu College Road, Beach Road","Nagercoil - 629002"],
-      color: "from-blue-500 to-cyan-500",
-      gradient: "bg-gradient-to-br from-blue-500 to-cyan-500",
-      action: "Get Directions →"
-    },
-    {
-      icon: "mdi:phone",
-      title: "Call Our Team",
-      details: ["+91 9363208701", "+91 9876543210"],
-      color: "from-purple-500 to-pink-500",
-      gradient: "bg-gradient-to-br from-purple-500 to-pink-500",
-      action: "Call Now →"
-    },
-    {
-      icon: "mdi:email",
-      title: "Send Us Email",
-      details: ["hello@creoleap.com", "support@creoleap.com"],
-      color: "from-green-500 to-emerald-500",
-      gradient: "bg-gradient-to-br from-green-500 to-emerald-500",
-      action: "Send Email →"
-    },
-    {
-      icon: "mdi:clock-outline",
-      title: "Office Hours",
-      details: ["Mon - Fri: 9AM - 6PM", "Sat: 10AM - 4PM"],
-      color: "from-orange-500 to-red-500",
-      gradient: "bg-gradient-to-br from-orange-500 to-red-500",
-      action: "View Calendar →"
-    }
-  ];
+  // const contactInfo = [
+  //   {
+  //     icon: "mdi:map-marker",
+  //     title: "Corporate Office",
+  //     details: ["Creoleap Technologies Private Limited", "29/8/2A, First Floor", "S.T.Hindu College Road, Beach Road","Nagercoil - 629002"],
+  //     color: "from-blue-500 to-cyan-500",
+  //     gradient: "bg-gradient-to-br from-blue-500 to-cyan-500",
+  //     action: "Get Directions →"
+  //   },
+  //   {
+  //     icon: "mdi:phone",
+  //     title: "Call Our Team",
+  //     details: ["+91 9363208701", "+91 9876543210"],
+  //     color: "from-purple-500 to-pink-500",
+  //     gradient: "bg-gradient-to-br from-purple-500 to-pink-500",
+  //     action: "Call Now →"
+  //   },
+  //   {
+  //     icon: "mdi:email",
+  //     title: "Send Us Email",
+  //     details: ["hello@creoleap.com", "support@creoleap.com"],
+  //     color: "from-green-500 to-emerald-500",
+  //     gradient: "bg-gradient-to-br from-green-500 to-emerald-500",
+  //     action: "Send Email →"
+  //   },
+  //   {
+  //     icon: "mdi:clock-outline",
+  //     title: "Office Hours",
+  //     details: ["Mon - Fri: 9AM - 6PM", "Sat: 10AM - 4PM"],
+  //     color: "from-orange-500 to-red-500",
+  //     gradient: "bg-gradient-to-br from-orange-500 to-red-500",
+  //     action: "View Calendar →"
+  //   }
+  // ];
 
 
-  const supportOptions = [
-    {
-      icon: "mdi:robot-outline",
-      title: "AI Assistant",
-      description: "Get instant answers with our smart AI assistant",
-      action: "Chat with AI",
-      color: "from-purple-500 to-blue-500",
-      stat: "24/7 Available"
-    },
-    {
-      icon: "mdi:video-outline",
-      title: "Video Call",
-      description: "Face-to-face consultation with our experts",
-      action: "Schedule Call",
-      color: "from-green-500 to-teal-500",
-      stat: "15 min Response"
-    },
-    {
-      icon: "mdi:file-document-outline",
-      title: "Documentation",
-      description: "Comprehensive guides and API references",
-      action: "Browse Docs",
-      color: "from-orange-500 to-red-500",
-      stat: "500+ Articles"
-    },
-    {
-      icon: "mdi:account-group-outline",
-      title: "Community",
-      description: "Connect with other educators and developers",
-      action: "Join Community",
-      color: "from-pink-500 to-purple-500",
-      stat: "10K+ Members"
-    }
-  ];
+  // const supportOptions = [
+  //   {
+  //     icon: "mdi:robot-outline",
+  //     title: "AI Assistant",
+  //     description: "Get instant answers with our smart AI assistant",
+  //     action: "Chat with AI",
+  //     color: "from-purple-500 to-blue-500",
+  //     stat: "24/7 Available"
+  //   },
+  //   {
+  //     icon: "mdi:video-outline",
+  //     title: "Video Call",
+  //     description: "Face-to-face consultation with our experts",
+  //     action: "Schedule Call",
+  //     color: "from-green-500 to-teal-500",
+  //     stat: "15 min Response"
+  //   },
+  //   {
+  //     icon: "mdi:file-document-outline",
+  //     title: "Documentation",
+  //     description: "Comprehensive guides and API references",
+  //     action: "Browse Docs",
+  //     color: "from-orange-500 to-red-500",
+  //     stat: "500+ Articles"
+  //   },
+  //   {
+  //     icon: "mdi:account-group-outline",
+  //     title: "Community",
+  //     description: "Connect with other educators and developers",
+  //     action: "Join Community",
+  //     color: "from-pink-500 to-purple-500",
+  //     stat: "10K+ Members"
+  //   }
+  // ];
 
 
 

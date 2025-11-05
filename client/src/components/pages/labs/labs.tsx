@@ -1,51 +1,55 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from '@tanstack/react-router';
+import { useParams} from '@tanstack/react-router';
 
 export default function LabsShowcase() {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [visibleSections, setVisibleSections] = useState([]);
-  const sectionRefs = useRef([]);
-  
+// const [activeIndex, setActiveIndex] = useState<number | null>(null);
+const [visibleSections, setVisibleSections] = useState<number[]>([]);
+const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);  
+
   // Use the correct hook based on whether we're on /labs or /labs/$labId
   const params = useParams({ strict: false });
   const labId = params.labId;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Scroll to specific lab when labId changes
-  useEffect(() => {
-    if (labId) {
-      const labIndex = labs.findIndex(lab => lab.id === labId);
-      if (labIndex !== -1 && sectionRefs.current[labIndex]) {
-        setTimeout(() => {
-          sectionRefs.current[labIndex].scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'center'
-          });
-        }, 100);
-      }
-    }
-  }, [labId]);
+ useEffect(() => {
+  if (!labId) return;
+
+  const labIndex = labs.findIndex(l => l.id === labId);
+  if (labIndex === -1) return;
+
+  const element = sectionRefs.current[labIndex];
+  if (!element) return;             
+
+  setTimeout(() => {
+    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+}, [labId]);
 
   // Intersection Observer for animations
-  useEffect(() => {
-    const observers = sectionRefs.current.map((ref, index) => {
-      if (!ref) return null;
-      
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleSections(prev => [...new Set([...prev, index])]);
-          }
-        },
-        { threshold: 0.2 }
-      );
-      
-      observer.observe(ref);
-      return observer;
-    }).filter(Boolean);
+useEffect(() => {
+  const observers: IntersectionObserver[] = [];
 
-    return () => observers.forEach(observer => observer.disconnect());
-  }, []);
+  sectionRefs.current.forEach((ref, index) => {
+    if (!ref) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleSections(prev => [...new Set([...prev, index])]);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(ref);
+    observers.push(observer);
+  });
+
+  return () => {
+    observers.forEach(observer => observer.disconnect());
+  };
+}, []);
 
   const labs = [
     {
@@ -165,22 +169,22 @@ export default function LabsShowcase() {
   ];
 
   // Function to handle lab navigation
-  const handleLabNavigation = (labId: string) => {
-    navigate({ to: '/labs/$labId', params: { labId } });
-  };
+  // const handleLabNavigation = (labId: string) => {
+  //   navigate({ to: '/labs/$labId', params: { labId } });
+  // };
 
   // Function to scroll to specific lab
-  const scrollToLab = (labId: string) => {
-    const labIndex = labs.findIndex(lab => lab.id === labId);
-    if (labIndex !== -1 && sectionRefs.current[labIndex]) {
-      sectionRefs.current[labIndex].scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'center'
-      });
-      // Update URL using TanStack Router
-      navigate({ to: '/labs/$labId', params: { labId }, replace: true });
-    }
-  };
+  // const scrollToLab = (labId: string) => {
+  //   const labIndex = labs.findIndex(lab => lab.id === labId);
+  //   if (labIndex !== -1 && sectionRefs.current[labIndex]) {
+  //     sectionRefs.current[labIndex].scrollIntoView({ 
+  //       behavior: 'smooth',
+  //       block: 'center'
+  //     });
+  //     // Update URL using TanStack Router
+  //     navigate({ to: '/labs/$labId', params: { labId }, replace: true });
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50">
@@ -259,8 +263,10 @@ export default function LabsShowcase() {
       return (
         <div
           key={lab.id}
-          ref={(el) => (sectionRefs.current[index] = el)}
-          id={lab.id}
+ref={(el) => {
+  sectionRefs.current[index] = el;
+}}
+       id={lab.id}
           className={`mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
@@ -309,8 +315,8 @@ export default function LabsShowcase() {
             >
               <div
                 className="cursor-pointer"
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
+                // onMouseEnter={() => setActiveIndex(index)}
+                // onMouseLeave={() => setActiveIndex(null)}
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3">
                   {lab.title}
@@ -329,7 +335,7 @@ export default function LabsShowcase() {
                 {/* Benefits */}
                 <div className={`bg-gradient-to-br ${lab.bgColor} rounded-3xl p-4 sm:p-6 border-2 border-gray-200`}>
                   <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <span className="text-2xl">{lab.icon}</span>
+                    {/* <span className="text-2xl">{lab.icon}</span> */}
                     Key Benefits
                   </h4>
                   <p className="text-gray-700 leading-relaxed">{lab.benefits}</p>

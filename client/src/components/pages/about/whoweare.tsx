@@ -4,7 +4,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 export default function WhoWeAre() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
@@ -55,14 +55,14 @@ export default function WhoWeAre() {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
+  // const handleMouseMove = (e) => {
+  //   if (!containerRef.current) return;
+  //   const rect = containerRef.current.getBoundingClientRect();
+  //   setMousePosition({
+  //     x: e.clientX - rect.left,
+  //     y: e.clientY - rect.top
+  //   });
+  // };
 
   return (
     <section 
@@ -92,7 +92,7 @@ export default function WhoWeAre() {
         {/* Main Interactive Content */}
         <div 
           ref={containerRef}
-          onMouseMove={handleMouseMove}
+          // onMouseMove={handleMouseMove}
           className="relative"
         >
           {/* Hero Content Block */}

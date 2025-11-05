@@ -66,9 +66,9 @@ const Solution: React.FC = () => {
 
   // State and refs
   const [activeSection, setActiveSection] = useState<string>(content[0].id);
-  const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>(
-    content.reduce((acc, item) => ({ ...acc, [item.id]: false }), {})
-  );
+  // const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>(
+  //   content.reduce((acc, item) => ({ ...acc, [item.id]: false }), {})
+  // );
   const [isUserInteracted, setIsUserInteracted] = useState<boolean>(false);
   const tabButtonsRef = useRef<TabButtonRefs>({});
   const navElementRef = useRef<HTMLDivElement>(null);
@@ -172,21 +172,21 @@ const Solution: React.FC = () => {
   }, [activeSection]);
 
   // Handle image loading
-  const handleImageLoad = (id: string) => {
-    setImageLoaded(prev => ({ ...prev, [id]: true }));
-  };
+  // const handleImageLoad = (id: string) => {
+  //   setImageLoaded(prev => ({ ...prev, [id]: true }));
+  // };
 
   // Handle tab click
-  const handleTabClick = (id: string) => {
-    setActiveSection(id);
-    setIsUserInteracted(true);
-    if (userInteractionTimeoutRef.current) {
-      clearTimeout(userInteractionTimeoutRef.current);
-    }
-    userInteractionTimeoutRef.current = setTimeout(() => {
-      setIsUserInteracted(false);
-    }, 10000); // Pause for 10 seconds
-  };
+  // const handleTabClick = (id: string) => {
+  //   setActiveSection(id);
+  //   setIsUserInteracted(true);
+  //   if (userInteractionTimeoutRef.current) {
+  //     clearTimeout(userInteractionTimeoutRef.current);
+  //   }
+  //   userInteractionTimeoutRef.current = setTimeout(() => {
+  //     setIsUserInteracted(false);
+  //   }, 10000); // Pause for 10 seconds
+  // };
 
   // Card data for the grid section
   const cardData = [

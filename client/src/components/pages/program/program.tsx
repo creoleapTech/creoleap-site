@@ -1,18 +1,25 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type SetStateAction } from 'react';
 import { Icon } from '@iconify/react';
 import { useSearch } from '@tanstack/react-router';
 import Testimonials from '@/components/Testimonial';
 
 export default function Programs() {
-  const searchParams = useSearch({ from: '__root__' });
+
+
+type ProgramRefs = Record<string, HTMLDivElement | null>;
+
+  const searchParams = useSearch({ from: '__root__' }) as { 
+  tag?: 'schools' | 'colleges'; 
+  id?: string; 
+};
   const [activeTab, setActiveTab] = useState('schools');
   const [isSticky, setIsSticky] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
-  const heroRef = useRef(null);
-  const tabsRef = useRef(null);
-  const mainTabsRef = useRef(null);
-  const programsSectionRef = useRef(null);
-  const programRefs = useRef({});
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const mainTabsRef = useRef<HTMLDivElement | null>(null);
+  const programsSectionRef = useRef<HTMLDivElement | null>(null);
+  const programRefs = useRef<ProgramRefs>({});
 
   const [faqs, setFaqs] = useState([
     {
@@ -225,7 +232,7 @@ export default function Programs() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = (tab: SetStateAction<string>) => {
     setActiveTab(tab);
     setTimeout(() => {
       programsSectionRef.current?.scrollIntoView({ 
@@ -352,10 +359,10 @@ export default function Programs() {
 
           {/* Programs Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-            {activePrograms.map((program, index) => (
+            {activePrograms.map((program) => (
               <div
                 key={program.id}
-                ref={el => programRefs.current[program.id] = el}
+               ref={(el) => { programRefs.current[program.id] = el; }} 
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>

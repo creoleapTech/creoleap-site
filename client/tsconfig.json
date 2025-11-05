@@ -1,28 +1,46 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", "../static/src/components/Carousel.tsx", "../static/src/components/ParallaxHero.tsx", "../static/src/components/About.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "static/src/components/**/*.tsx",
+    "server/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vite/client"],
+    "types": ["vite/client", "bun-types"], // Add bun-types
 
-    /* Bundler mode */
+    /* Bundler mode (Vite) */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
+    "isolatedModules": true,
 
-    /* Linting */
-    "skipLibCheck": true,
+    /* Paths & Base */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@static/*": ["static/src/*"]
+    },
+
+    /* Strictness */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-    }
+    "skipLibCheck": true,
+
+    /* Optional: Better DX */
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   }
 }
