@@ -419,9 +419,9 @@ export default function Programs() {
                     <Icon icon={program.icon} className="text-3xl text-white" />
                   </div>
                   <div className="absolute bottom-4 left-4 flex gap-2">
-                    <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {/* <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                       {program.duration}
-                    </span>
+                    </span> */}
                     <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                       {program.level}
                     </span>
