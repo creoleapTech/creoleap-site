@@ -211,7 +211,7 @@ const Contact = () => {
     const { gsap } = window;
     const rect = containerRef.current.getBoundingClientRect();
 
-    particlesRef.current.forEach((particle, index) => {
+    particlesRef.current.forEach((particle, _index) => {
       if (!particle) return;
 
       // Initial setup

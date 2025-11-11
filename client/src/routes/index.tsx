@@ -7,7 +7,7 @@ import Contact from '@/components/pages/home/contact'
 import Footer from '@/components/Footer'
 import Programs from '@/components/pages/home/Programs'
 import Testimonials from '@/components/Testimonial'
-import Partners from '@/components/Partners'
+// import Partners from '@/components/Partners'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,

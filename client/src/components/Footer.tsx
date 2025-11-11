@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import  {useEffect, useRef } from 'react';
 // import { toast } from 'sonner';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaTextWidth } from 'react-icons/fa';
+// import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaTextWidth } from 'react-icons/fa';
 
 const Footer = () => {
   // const [email, setEmail] = useState('');
