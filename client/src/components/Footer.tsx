@@ -183,7 +183,7 @@ const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
                 <span className="text-sm sm:text-base">29/8/2A, First Floor, S.T.Hindu College Road, Beach Road, Nagercoil - 629002, Tamil Nadu, India</span>
               </div>
             </address>
-          </div>ie
+          </div>
         </div>
       </div>
 
