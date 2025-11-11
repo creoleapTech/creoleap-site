@@ -183,7 +183,7 @@ const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
                 <span className="text-sm sm:text-base">29/8/2A, First Floor, S.T.Hindu College Road, Beach Road, Nagercoil - 629002, Tamil Nadu, India</span>
               </div>
             </address>
-          </div>
+          </div>ie
         </div>
       </div>
 
@@ -194,20 +194,20 @@ const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
             &copy; 2025 Creoleap Technologies. All rights reserved.
           </div>
    <div className="flex space-x-3">
-                <a href="https://www.linkedin.com/company/creoleap/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#FF6B6B] transition-colors">
+                <a href="https://www.linkedin.com/company/creoleap/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:linkedin" width="16" height="16" />
                 </a>
-                <a href="https://www.instagram.com/creoleap_technologies" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#FF6B6B] transition-colors">
+                <a href="https://www.instagram.com/creoleap_technologies?igsh=dG5jOG1iYTFmYXBz" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:instagram" width="16" height="16" />
                 </a>
-                <a href="https://www.instagram.com/creoleap_technologies" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#FF6B6B] transition-colors">
+                <a href="https://www.facebook.com/share/1A4a8Az6fb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:facebook" width="16" height="16" />
                 </a>
-                <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+                <a  href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:whatsapp" width="16" height="16" />
                 </a>
                 
-                    <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+                    <a href="https://x.com/CreoleapTech" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="prime:twitter" width="12" height="12" />
                 </a>
               </div>

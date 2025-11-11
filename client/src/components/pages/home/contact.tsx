@@ -187,7 +187,7 @@ const Contact = () => {
 
       script.onerror = () => {
         console.error('Failed to load GSAP');
-        toast.error('Failed to load animations');
+        // toast.error('Failed to load animations');
       };
     };
 
