@@ -1,6 +1,7 @@
+import { Icon } from '@iconify/react';
 import  {useEffect, useRef } from 'react';
 // import { toast } from 'sonner';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaTextWidth } from 'react-icons/fa';
 
 const Footer = () => {
   // const [email, setEmail] = useState('');
@@ -175,11 +176,11 @@ const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
                 <a href="mailto:info@creoleap.com" className="hover:text-white text-sm sm:text-base">info@creoleap.com</a>
               </div>
               <div className="flex items-center justify-center md:justify-start">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="min-w-5 h-5 mr-2"  fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-sm sm:text-base">Chennai, Tamil Nadu, India</span>
+                <span className="text-sm sm:text-base">29/8/2A, First Floor, S.T.Hindu College Road, Beach Road, Nagercoil - 629002, Tamil Nadu, India</span>
               </div>
             </address>
           </div>
@@ -192,44 +193,24 @@ const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
           <div className="text-gray-400 text-center md:text-left mb-4 md:mb-0 text-sm sm:text-base">
             &copy; 2025 Creoleap Technologies. All rights reserved.
           </div>
-          <div className="flex space-x-4 sm:space-x-6">
-            <a
-              href="https://www.linkedin.com/company/creoleap/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={16}  />
-            </a>
-            <a
-              href="https://www.instagram.com/creoleap_technologies"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={16} />
-            </a>
-            <a
-              href="https://wa.me/9363208701"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="WhatsApp"
-            >
-              <FaTwitter size={16}  /> {/* Using Twitter icon for WhatsApp */}
-            </a>
-            <a
-              href="https://facebook.com/creoleap"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="Facebook"
-            >
-              <FaFacebook size={16}  />
-            </a>
-          </div>
+   <div className="flex space-x-3">
+                <a href="https://www.linkedin.com/company/creoleap/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#FF6B6B] transition-colors">
+                  <Icon icon="mdi:linkedin" width="16" height="16" />
+                </a>
+                <a href="https://www.instagram.com/creoleap_technologies" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#FF6B6B] transition-colors">
+                  <Icon icon="mdi:instagram" width="16" height="16" />
+                </a>
+                <a href="https://www.instagram.com/creoleap_technologies" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#FF6B6B] transition-colors">
+                  <Icon icon="mdi:facebook" width="16" height="16" />
+                </a>
+                <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+                  <Icon icon="mdi:whatsapp" width="16" height="16" />
+                </a>
+                
+                    <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+                  <Icon icon="prime:twitter" width="12" height="12" />
+                </a>
+              </div>
         </div>
       </div>
     </footer>

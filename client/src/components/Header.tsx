@@ -24,8 +24,8 @@ export default function Header() {
 
   const programs = {
     schools: [
-      { name: "AI Integrated Electronics", path: "/programs?tag=schools&id=ai-electronics" },
       { name: "AI Integrated Robotics", path: "/programs?tag=schools&id=ai-robotics" },
+      { name: "AI Integrated Electronics", path: "/programs?tag=schools&id=ai-electronics" },
       { name: "NEP Aligned Curriculum", path: "/programs?tag=schools&id=nep-curriculum" },
       { name: "Teacher Empowerment Program", path: "/programs?tag=schools&id=teacher-empowerment" },
     ],
@@ -161,6 +161,10 @@ export default function Header() {
                 </a>
                 <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:whatsapp" width="16" height="16" />
+                </a>
+                
+                    <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+                  <Icon icon="prime:twitter" width="12" height="12" />
                 </a>
               </div>
             </div>

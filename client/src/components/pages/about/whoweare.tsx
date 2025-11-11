@@ -44,6 +44,12 @@ export default function WhoWeAre() {
       alt: "VR Learning Space",
       title: "VR Learning Space",
       description: "Immersive virtual reality educational experiences"
+    },
+        {
+      src: "/images/session/12.jpeg",
+      alt: "AI & Robotics",
+      title: "AI & Robotics",
+      description: "Immersive virtual reality educational experiences"
     }
   ];
  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 4000 })]);

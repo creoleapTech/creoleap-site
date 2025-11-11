@@ -70,7 +70,7 @@ const Programs = () => {
       subtitle: "Robot Operating System Mastery",
       description: "Hands-on training and certification on the Robot Operating System (ROS). Learn robotics middleware, sensor integration, motion planning, and control for industrial and research applications.",
       features: ["ROS Basics & Setup", "Sensor Integration", "Motion Planning", "Real-World Projects"],
-      image: "https://cdn.pixabay.com/photo/2020/06/18/13/52/robot-5318783_960_720.jpg"
+      image: "/images/ros2.png"
     }
   ];
 
@@ -233,7 +233,7 @@ const Programs = () => {
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gradient-to-b from-gray-50 to-indigo-50 flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div ref={containerRef} className=" bg-gradient-to-b py-20 from-gray-50 to-indigo-50 flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Morphing Background */}
       <div ref={morphingShapeRef} className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-3xl"></div>
 

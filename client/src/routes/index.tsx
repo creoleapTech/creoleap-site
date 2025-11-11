@@ -21,7 +21,7 @@ function RouteComponent() {
   <Future />
 <About />
 <Solution />
-<Partners />
+{/* <Partners /> */}
 <Testimonials />
     <Contact />
     <Footer/>

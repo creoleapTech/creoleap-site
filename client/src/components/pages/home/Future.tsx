@@ -40,71 +40,71 @@ const Future = () => {
     };
   }, []);
 
-  const features: Feature[] = [
-    {
-      icon: "mdi:book-education-outline",
-      color: "#6504b0",
-      title: "NEP-Aligned Curriculum",
-      desc: "Our programs are designed to meet the guidelines of the National Education Policy, ensuring future-ready education.",
-      angle: 0
-    },
-    {
-      icon: "mdi:atom",
-      color: "#00BFFF",
-      title: "CCC Methodology",
-      desc: "We integrate Curiosity, Creativity, and Critical Thinking into every learning experience.",
-      angle: 40
-    },
-    {
-      icon: "mdi:robot",
-      color: "#FF4500",
-      title: "Innovative Learning Solutions",
-      desc: "Cutting-edge tools and methods to transform education.",
-      angle: 80
-    },
-    {
-      icon: "mdi:hand-extended-outline",
-      color: "#32CD32",
-      title: "Hands-On Training Programs",
-      desc: "Our expert-led training sessions empower both teachers and students with practical knowledge.",
-      angle: 120
-    },
-    {
-      icon: "mdi:flask-outline",
-      color: "#FFA500",
-      title: "Experiential Learning Focus",
-      desc: "We prioritize real-world applications over rote memorization to enhance engagement and retention.",
-      angle: 160
-    },
-    {
-      icon: "mdi:toolbox-outline",
-      color: "#800080",
-      title: "Comprehensive Resources",
-      desc: "From robotics kits to AI-driven tools, we offer a diverse range of learning materials.",
-      angle: 200
-    },
-    {
-      icon: "mdi:account-group",
-      color: "#1E90FF",
-      title: "Expert-Led Development",
-      desc: "Our team of professionals ensures high-quality content and solutions tailored to modern education needs.",
-      angle: 240
-    },
-    {
-      icon: "mdi:desktop-mac",
-      color: "#DC143C",
-      title: "Innovation Hubs",
-      desc: "We create collaborative spaces that promote creativity and technological exploration.",
-      angle: 280
-    },
-    {
-      icon: "mdi:headset",
-      color: "#2E8B57",
-      title: "Dedicated Support",
-      desc: "We provide ongoing guidance to ensure seamless implementation of our solutions.",
-      angle: 320
-    }
-  ];
+const features: Feature[] = [
+  {
+    icon: "mdi:book-education-outline",
+    color: "#6504b0",
+    title: "NEP-Aligned Curriculum",
+    desc: "Curriculum designed to meet National Education Policy guidelines for future-ready education.",
+    angle: 0
+  },
+  {
+    icon: "mdi:atom",
+    color: "#00BFFF",
+    title: "CCC Methodology",
+    desc: "Integrates Curiosity, Creativity, and Critical Thinking into every learning experience.",
+    angle: 40
+  },
+  {
+    icon: "mdi:robot",
+    color: "#FF4500",
+    title: "Innovative Learning",
+    desc: "Cutting-edge tools and methods to transform educational experiences.",
+    angle: 80
+  },
+  {
+    icon: "mdi:hand-extended-outline",
+    color: "#32CD32",
+    title: "Hands-On Training",
+    desc: "Expert-led practical sessions for teachers and students.",
+    angle: 120
+  },
+  {
+    icon: "mdi:flask-outline",
+    color: "#FFA500",
+    title: "Experiential Learning",
+    desc: "Focus on real-world applications over rote memorization.",
+    angle: 160
+  },
+  {
+    icon: "mdi:toolbox-outline",
+    color: "#800080",
+    title: "Comprehensive Resources",
+    desc: "Diverse learning materials from robotics kits to AI tools.",
+    angle: 200
+  },
+  {
+    icon: "mdi:account-group",
+    color: "#1E90FF",
+    title: "Expert-Led Development",
+    desc: "Professional team ensuring high-quality educational content.",
+    angle: 240
+  },
+  {
+    icon: "mdi:desktop-mac",
+    color: "#DC143C",
+    title: "Innovation Hubs",
+    desc: "Collaborative spaces promoting creativity and tech exploration.",
+    angle: 280
+  },
+  {
+    icon: "mdi:headset",
+    color: "#2E8B57",
+    title: "Dedicated Support",
+    desc: "Ongoing guidance for seamless solution implementation.",
+    angle: 320
+  }
+];
 
   const getRadius = (): number => {
     const width = window.innerWidth;
@@ -113,12 +113,12 @@ const Future = () => {
       const maxRadius = (Math.min(width, 400) - cardWidth) / 2;
       return Math.max(80, Math.min(maxRadius, 120));
     }
-    return width < 1024 ? 200 : 250;
+    return width < 1024 ? 200 : 200;
   };
 
   const getCardSize = (): string => {
-    if (isMobile) return 'w-32 h-32';
-    return window.innerWidth < 1024 ? 'w-40 h-40' : 'w-48 h-48';
+    if (isMobile) return 'w-36 h-36';
+    return window.innerWidth < 1024 ? 'w-40 h-40' : 'w-44 h-44';
   };
 
   const getContainerSize = (): string => {
@@ -141,7 +141,7 @@ const Future = () => {
   };
 
   return (
-    <section className="relative lg:py-16 py-12 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative lg:py-12 py-8 px-4 sm:px-6 lg:px-8 lg:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[url('/images/robo2.webp')] bg-cover bg-center bg-no-repeat blur-sm"></div>
       <div className="absolute inset-0 bg-black/50"></div>
@@ -156,7 +156,7 @@ const Future = () => {
         </div>
 
         {/* Circular Layout */}
-        <div className="relative flex justify-center">
+        <div className="relative flex justify-center -mt-12">
           <div
             className="relative"
             style={{
@@ -172,7 +172,7 @@ const Future = () => {
               return (
                 <div
                   key={`line-${i}`}
-                  className="absolute w-px bg-gradient-to-b from-transparent via-cyan-400/60 to-transparent transition-opacity duration-500"
+                  className="absolute w-px  bg-gradient-to-b from-transparent via-cyan-400/60 to-transparent transition-opacity duration-500"
                   style={{
                     left: '50%',
                     top: '50%',
@@ -200,7 +200,7 @@ const Future = () => {
                     transform: 'translate(-50%, -50%)',
                     transitionDelay: `${i * 80}ms`,
                     opacity: visible ? 1 : 0,
-                    zIndex: activeFeature === i ? 50 : 10,
+                    zIndex: activeFeature === i ? 20 : 10,
                   }}
                   onMouseEnter={() => setActiveFeature(i)}
                   onMouseLeave={() => setActiveFeature(null)}

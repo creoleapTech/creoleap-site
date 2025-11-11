@@ -192,7 +192,7 @@ const Solution: React.FC = () => {
   const cardData = [
     {
       icon: "carbon:education",
-      title: "AI-Based Robotics Education",
+      title: "AI Integrated Robotics Education",
       description: "Smart robotic kits for K-12 students with AI-powered learning and real-world applications."
     },
     {

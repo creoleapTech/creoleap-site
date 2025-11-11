@@ -207,7 +207,7 @@ export default function Hero() {
               <div className="space-y-4">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-sm font-medium mb-4">
                   <Icon icon="mdi:rocket-launch" className="mr-2" />
-                  Next Generation STEM Education
+                  Next Generation AI & STEM Education
                 </div>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -218,32 +218,30 @@ export default function Hero() {
                 </h1>
 
                 <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-                  Transformative cutting-edge AI, STEM, Robotics and Electronics education programs
-                  that prepare students for the technological challenges of tomorrow.
+                  Transformative cutting-edge AI, STEM, Robotics and Industry 4.0 Readiness education programs
+                  designed to prepare students for the technological challenges of tomorrow.
                 </p>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/contact"
+                  to="/programs"
                   className="cta-button group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center space-x-3 hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <span>Start Your Journey</span>
+                  <span> Explore Programs</span>
                   <Icon icon="mdi:arrow-right" className="group-hover:translate-x-1 transition-transform duration-300" width="20" />
                 </Link>
 
-                <button className="cta-button border border-white/20 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
-                  Explore Programs
-                </button>
+                 
               </div>
             </div>
 
             {/* Right: Feature Cards */}
             <div className="grid grid-cols-2 gap-6">
               {[
-                { icon: "material-symbols:bookmark-stacks-outline-rounded", title: "AI-Based Robotics Education", desc: "Interactive learning with cutting-edge AI technology", gradient: "from-cyan-500 to-blue-600" },
-                { icon: "material-symbols:menu-book-outline", title: "AI-Driven STEM Curriculum", desc: "AI-infused STEM learning programs aligned with NEP 2020.", gradient: "from-pink-500 to-red-600" },
+                { icon: "material-symbols:bookmark-stacks-outline-rounded", title: "AI Integrated Robotics Education", desc: "Interactive learning with cutting-edge AI technology", gradient: "from-cyan-500 to-blue-600" },
+                { icon: "material-symbols:menu-book-outline", title: "AI Integrated STEM Curriculum", desc: "AI-infused STEM learning programs aligned with NEP 2020.", gradient: "from-pink-500 to-red-600" },
                 { icon: "material-symbols:trophy-outline", title: "STEM Education Excellence", desc: "Hands-on Learning for Future Innovators", gradient: "from-blue-500 to-purple-600" },
                 { icon: "material-symbols:engineering-outline", title: "Industry 4.0 Readiness", desc: "Future Skills for industry-standards", gradient: "from-purple-500 to-pink-600" },
               ].map((card, i) => (

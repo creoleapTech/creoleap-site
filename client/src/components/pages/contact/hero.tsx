@@ -189,7 +189,7 @@ export default function ContactPage() {
             <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-1">Corporate Office</h3>
             <p className="text-slate-600 text-md md:text-lg">
               Creoleap Technologies Private Limited, 29/8/2A, First Floor, S.T.Hindu College Road,
-              Beach Road, Nagercoil-629002.
+              Beach Road, Nagercoil-629002,<br /> Tamil Nadu, India.
             </p>
           </div>
         </div>

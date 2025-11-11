@@ -78,15 +78,15 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
 
     let animationId: number;
     let scrollPosition = 0;
-    const scrollSpeed = 0.8; // Pixels per frame
+    const scrollSpeed = 1.8; // Pixels per frame
 
     const animate = () => {
       if (!isPaused) {
         scrollPosition += scrollSpeed;
         
         // Reset position seamlessly when we've scrolled through one set
-        const cardWidth = 240; // w-60 = 240px
-        const gap = 32; // gap-8 = 32px
+        const cardWidth = 140; // w-60 = 240px
+        const gap = 24; // gap-8 = 32px
         const totalWidth = (cardWidth + gap) * partners.length;
         
         if (scrollPosition >= totalWidth) {
@@ -112,7 +112,7 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
       <div className="container mx-auto max-w-7xl mb-5">
         <div className="text-center">
        
-          <h2 className="text-5xl font-bold bg-gradient-to-bl from-[#101447] to-[#1201a9]  bg-clip-text text-transparent pb-4">
+          <h2 className="lg:text-5xl md:text-3xl text-xl font-bold bg-gradient-to-bl from-[#101447] to-[#1201a9]  bg-clip-text text-transparent pb-4">
             Trusted Partnerships
           </h2>
         
@@ -126,8 +126,8 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Gradient Overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white via-gray-50 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white via-gray-50 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 lg:w-40 w-5 bg-gradient-to-r from-white via-gray-50 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 lg:w-40 w-5 bg-gradient-to-l from-white via-gray-50 to-transparent z-10 pointer-events-none"></div>
 
         {/* Scrolling Track */}
         <div className="overflow-hidden py-0">
@@ -139,7 +139,7 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
             {infinitePartners.map((partner, index) => (
               <div
                 key={index}
-                className="w-60 flex-shrink-0 group"
+                className="w-52 lg:w-60 flex-shrink-0 group"
               >
                 <div className="relative  transition-all duration-500 overflow-hidden border border-none  transform hover:-translate-y-2 hover:scale-105">
                   {/* Gradient Top Border */}

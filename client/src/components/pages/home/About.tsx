@@ -3,7 +3,7 @@
 const About = () => {
   return (
 <div className=' bg-gradient-to-t from-gray-50 to-indigo-50 '>
-   <section className='lg:py-10 py-5 lg:w-3/4 w-5/6 mx-auto px-auto flex flex-col justify-center items-center'>
+   <section className='lg:py-10 py-5 lg:w-3/4 md:w-5/6 mx-auto px-auto flex flex-col justify-center items-center'>
   <h1 className=' text-gray-600 lg:py-5 py-2 lg:text-2xl text-lg   text-center leading-normal'>
     At Creoleap Technologies, we are transforming education by integrating AI, Robotics, and STEM learning into a dynamic, NEP-aligned curriculum based on the CCC Method. Our mission is to empower students and educators with innovative tools, fostering a culture of inquiry-driven, hands-on learning that prepares young minds for the future.
   </h1>

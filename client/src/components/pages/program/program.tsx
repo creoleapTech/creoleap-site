@@ -4,21 +4,20 @@ import { useSearch } from '@tanstack/react-router';
 import Testimonials from '@/components/Testimonial';
 
 export default function Programs() {
-
-
-type ProgramRefs = Record<string, HTMLDivElement | null>;
+  type ProgramRefs = Record<string, HTMLDivElement | null>;
 
   const searchParams = useSearch({ from: '__root__' }) as { 
-  tag?: 'schools' | 'colleges'; 
-  id?: string; 
-};
+    tag?: 'schools' | 'colleges'; 
+    id?: string; 
+  };
   const [activeTab, setActiveTab] = useState('schools');
   const [isSticky, setIsSticky] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const heroSectionRef = useRef<HTMLDivElement | null>(null);
   const mainTabsRef = useRef<HTMLDivElement | null>(null);
+  const tabsRef = useRef<HTMLDivElement | null>(null);
   const programsSectionRef = useRef<HTMLDivElement | null>(null);
+  const benefitsSectionRef = useRef<HTMLDivElement | null>(null);
   const programRefs = useRef<ProgramRefs>({});
 
   const [faqs, setFaqs] = useState([
@@ -46,23 +45,6 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
 
   const schoolPrograms = [
     {
-      id: "ai-electronics",
-      title: "AI Integrated Electronics",
-      description: "Empower students with cutting-edge AI and electronics integration, preparing them for future technological challenges through hands-on learning and real-world applications.",
-      icon: "mdi:chip",
-      features: ["Hands-on Projects", "AI Fundamentals", "Circuit Design", "IoT Integration", "PCB Design", "Sensor Networks"],
-      color: "from-blue-500 to-cyan-500",
-      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
-      duration: "6-12 Months",
-      level: "Beginner to Advanced",
-      outcomes: [
-        "Understand AI-powered electronic systems",
-        "Design and build smart devices",
-        "Integrate sensors and actuators with AI",
-        "Develop IoT solutions"
-      ]
-    },
-    {
       id: "ai-robotics",
       title: "AI Integrated Robotics",
       description: "Combine robotics with artificial intelligence to create smart, autonomous systems that solve real-world problems. From basic robotics to advanced AI-driven automation.",
@@ -77,6 +59,23 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
         "Implement computer vision systems",
         "Develop autonomous navigation",
         "Create machine learning models for robotics"
+      ]
+    },
+    {
+      id: "ai-electronics",
+      title: "AI Integrated Electronics",
+      description: "Empower students with cutting-edge AI and electronics integration, preparing them for future technological challenges through hands-on learning and real-world applications.",
+      icon: "mdi:chip",
+      features: ["Hands-on Projects", "AI Fundamentals", "Circuit Design", "IoT Integration", "PCB Design", "Sensor Networks"],
+      color: "from-blue-500 to-cyan-500",
+      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+      duration: "6-12 Months",
+      level: "Beginner to Advanced",
+      outcomes: [
+        "Understand AI-powered electronic systems",
+        "Design and build smart devices",
+        "Integrate sensors and actuators with AI",
+        "Develop IoT solutions"
       ]
     },
     {
@@ -182,17 +181,19 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
       // Wait for state update and DOM render, then scroll
       setTimeout(() => {
         if (id && programRefs.current[id]) {
-          programRefs.current[id].scrollIntoView({
+          programRefs.current[id]?.scrollIntoView({
             behavior: 'smooth',
             block: 'center'
           });
           
           // Add highlight effect
           const element = programRefs.current[id];
-          element.classList.add('ring-4', 'ring-blue-500', 'ring-opacity-50');
-          setTimeout(() => {
-            element.classList.remove('ring-4', 'ring-blue-500', 'ring-opacity-50');
-          }, 2000);
+          if (element) {
+            element.classList.add('ring-4', 'ring-blue-500', 'ring-opacity-50');
+            setTimeout(() => {
+              element.classList.remove('ring-4', 'ring-blue-500', 'ring-opacity-50');
+            }, 2000);
+          }
         } else if (programsSectionRef.current) {
           // If no specific ID, just scroll to programs section
           programsSectionRef.current.scrollIntoView({
@@ -204,24 +205,36 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
     }
   }, [searchParams]);
 
-  // Sticky tabs effect
+  // Sticky tabs and floating button effects
   useEffect(() => {
     const handleScroll = () => {
-      if (!heroRef.current || !tabsRef.current || !mainTabsRef.current || !programsSectionRef.current) return;
+      if (!heroSectionRef.current || !mainTabsRef.current || !programsSectionRef.current || !benefitsSectionRef.current) return;
 
-      const heroBottom = heroRef.current.getBoundingClientRect().bottom;
       const mainTabsBottom = mainTabsRef.current.getBoundingClientRect().bottom;
       const programsSectionTop = programsSectionRef.current.getBoundingClientRect().top;
       const programsSectionBottom = programsSectionRef.current.getBoundingClientRect().bottom;
-      const tabsHeight = tabsRef.current.offsetHeight;
+      const benefitsSectionTop = benefitsSectionRef.current.getBoundingClientRect().top;
       
-      if (heroBottom <= tabsHeight) {
+      // Show sticky tabs when main tabs are scrolled out of view AND programs section is visible
+      // AND benefits section is not yet reached
+      const isMainTabsVisible = mainTabsBottom > 0;
+      const isProgramsSectionVisible = programsSectionTop <= window.innerHeight && programsSectionBottom >= 0;
+      const isBenefitsSectionReached = benefitsSectionTop <= window.innerHeight;
+      
+      // Sticky tabs should show only when:
+      // - Main tabs are not visible AND
+      // - Programs section is visible AND
+      // - Benefits section is not yet reached
+      if (!isMainTabsVisible && isProgramsSectionVisible && !isBenefitsSectionReached) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
       }
 
-      if (mainTabsBottom <= 0 && programsSectionTop <= window.innerHeight && programsSectionBottom >= 0) {
+      // Show floating button only when in programs section (not in hero section)
+      // AND benefits section is not yet reached
+      const isInHeroSection = mainTabsBottom > 0;
+      if (isProgramsSectionVisible && !isInHeroSection && !isBenefitsSectionReached) {
         setShowFloatingButton(true);
       } else {
         setShowFloatingButton(false);
@@ -245,69 +258,97 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative py-5 bg-gradient-to-br from-[#080A25] via-[#080e4a] to-[#0a015a] text-white overflow-hidden">
-        {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
+      <section ref={heroSectionRef} className="relative py-5 bg-gradient-to-br from-[#080A25] via-[#080e4a] to-[#0a015a] text-white overflow-hidden">
         <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500 rounded-full -translate-y-36 translate-x-36 opacity-20 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-800 rounded-full translate-y-48 -translate-x-48 opacity-20 blur-3xl"></div>
         
-           <div className="absolute z-20 inset-0 overflow-hidden">
+        <div className="absolute z-20 inset-0 overflow-hidden">
           <div className="absolute w-80 h-80 bg-blue-400 rounded-full opacity-10 -top-40 -right-40"></div>
           <div className="absolute w-60 h-60 bg-purple-500 rounded-full opacity-30 -bottom-30 -left-20"></div>
           <div className="absolute w-40 h-40 bg-indigo-400 rounded-full opacity-10 top-1/2 left-1/3"></div>
         </div>
-      <div ref={heroRef} className="relative overflow-hidden  py-20 px-4">
-        {/* <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')] animate-pulse"></div>
-        </div> */}
-        <div className="container mx-auto text-center relative z-10">
-              <h1 className="text-5xl lg:text-7xl font-bold pb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-           Our Programs
+        
+        <div className="relative py-20 px-4">
+          <div className="container mx-auto text-center relative z-30">
+            <h1 className="text-5xl lg:text-7xl font-bold pb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Our Programs
             </h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-            Transforming Education Through Innovation and Technology - Empowering the Next Generation of Innovators
-          </p>
-          
-          {/* Main Tabs in Hero Section */}
-          <div ref={mainTabsRef} className="flex justify-center gap-4 max-w-md mx-auto mt-12">
-            <button
-              onClick={() => handleTabChange('schools')}
-              className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${
-                activeTab === 'schools'
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-              }`}
-            >
-              <Icon icon="mdi:school" className="text-xl" />
-              Schools
-            </button>
-            <button
-              onClick={() => handleTabChange('colleges')}
-              className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${
-                activeTab === 'colleges'
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-              }`}
-            >
-              <Icon icon="mdi:domain" className="text-xl" />
-              Colleges
-            </button>
+            <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
+              Transforming Education Through Innovation and Technology - Empowering the Next Generation of Innovators
+            </p>
+            
+            {/* Main Tabs in Hero Section */}
+            <div ref={mainTabsRef} className="flex justify-center gap-4 max-w-md mx-auto mt-12 relative z-30">
+              <button
+                onClick={() => handleTabChange('schools')}
+                className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${
+                  activeTab === 'schools'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                    : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                }`}
+              >
+                <Icon icon="mdi:school" className="text-xl" />
+                Schools
+              </button>
+              <button
+                onClick={() => handleTabChange('colleges')}
+                className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${
+                  activeTab === 'colleges'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                    : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                }`}
+              >
+                <Icon icon="mdi:domain" className="text-xl" />
+                Colleges
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-        </section>
+      </section>
+
       {/* Sticky Tabs - Top Right Corner */}
       <div 
         ref={tabsRef}
-        className={`fixed top-4 right-4 z-50 transition-all duration-300 ${
-          isSticky ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+        className={`fixed top-4 right-4 transition-all duration-300 ${
+          isSticky ? 'opacity-100 translate-y-0 z-50' : 'opacity-0 -translate-y-4 pointer-events-none -z-10'
         }`}
       >
+        <div className="flex gap-2 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-gray-200 p-2">
+          <button
+            onClick={() => handleTabChange('schools')}
+            className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${
+              activeTab === 'schools'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
+            }`}
+          >
+            {activeTab === 'schools' && (
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+            )}
+            <Icon icon="mdi:school" className="text-lg" />
+            Schools
+          </button>
+          <button
+            onClick={() => handleTabChange('colleges')}
+            className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${
+              activeTab === 'colleges'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
+            }`}
+          >
+            {activeTab === 'colleges' && (
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+            )}
+            <Icon icon="mdi:domain" className="text-lg" />
+            Colleges
+          </button>
+        </div>
       </div>
 
       {/* Floating Button */}
       <div 
-        className={`fixed top-1/2 right-6 z-50 transition-all duration-300 ${
-          showFloatingButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        className={`fixed top-1/2 right-6 transition-all duration-300 ${
+          showFloatingButton ? 'opacity-100 translate-y-0 z-50' : 'opacity-0 translate-y-4 pointer-events-none -z-10'
         }`}
       >
         <div className="flex flex-col gap-2 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-gray-200 p-2">
@@ -362,7 +403,7 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
             {activePrograms.map((program) => (
               <div
                 key={program.id}
-               ref={(el) => { programRefs.current[program.id] = el; }} 
+                ref={(el) => { programRefs.current[program.id] = el; }} 
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
@@ -431,7 +472,7 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
       </div>
 
       {/* Benefits Section */}
-      <div className="bg-gradient-to-r from-gray-50 to-blue-50 py-16 px-4">
+      <div ref={benefitsSectionRef} className="bg-gradient-to-r from-gray-50 to-blue-50 py-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -545,27 +586,6 @@ type ProgramRefs = Record<string, HTMLDivElement | null>;
         </div>
       </div>
 
-      {/* Call to Action Section */}
-      <div className="bg-gradient-to-r from-blue-900 to-indigo-900 py-16 px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Institution?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join hundreds of institutions already benefiting from our innovative programs and cutting-edge technology solutions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-blue-900 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
-              <Icon icon="mdi:calendar" className="text-2xl" />
-              Book a Demo
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
-              <Icon icon="mdi:phone" className="text-2xl" />
-              Contact Us
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
