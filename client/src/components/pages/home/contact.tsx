@@ -248,7 +248,7 @@ const Contact = () => {
   ];
 
   return (
-    <div ref={containerRef} className="bg-gradient-to-br from-[#080A25] to-[#0a015a] p-4 sm:p-6 md:p-8 lg:p-12 text-white relative overflow-hidden min-h-screen">
+    <div id='form' ref={containerRef} className="bg-gradient-to-br from-[#080A25] to-[#0a015a] p-4 sm:p-6 md:p-8 lg:p-12 text-white relative overflow-hidden min-h-screen">
       {/* Particle System */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {Array.from({ length: 50 }, (_, i) => (
