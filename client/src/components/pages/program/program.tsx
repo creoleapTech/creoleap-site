@@ -11,11 +11,12 @@ export default function Programs() {
     id?: string; 
   };
   const [activeTab, setActiveTab] = useState('schools');
-  const [isSticky, setIsSticky] = useState(false);
+  
+  const [, setIsSticky] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
   const heroSectionRef = useRef<HTMLDivElement | null>(null);
   const mainTabsRef = useRef<HTMLDivElement | null>(null);
-  const tabsRef = useRef<HTMLDivElement | null>(null);
+  // const tabsRef = useRef<HTMLDivElement | null>(null);
   const programsSectionRef = useRef<HTMLDivElement | null>(null);
   const benefitsSectionRef = useRef<HTMLDivElement | null>(null);
   const programRefs = useRef<ProgramRefs>({});

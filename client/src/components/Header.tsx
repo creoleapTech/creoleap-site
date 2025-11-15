@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { Icon } from '@iconify/react';
 
 export default function Header() {
@@ -9,7 +9,7 @@ export default function Header() {
   const [schoolsSubMenuOpen, setSchoolsSubMenuOpen] = useState(false);
   const [collegesSubMenuOpen, setCollegesSubMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
- const navigate = useNavigate();
+//  const navigate = useNavigate();
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const programDropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);   // <-- NEW
@@ -90,27 +90,27 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
 /* ──────────────────────  BOOK DEMO HANDLER  ────────────────────── */
-  const handleBookDemo = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    closeAll(); // Close mobile menu if open
+  // const handleBookDemo = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  //   e.preventDefault();
+  //   closeAll(); // Close mobile menu if open
     
-    // Check if already on contact page
-    if (window.location.pathname === '/contact') {
-      const formElement = document.getElementById('form');
-      if (formElement) {
-        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    } else {
-      // Navigate to contact page then scroll
-      navigate({ to: '/contact' });
-      setTimeout(() => {
-        const formElement = document.getElementById('form');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    }
-  };
+  //   // Check if already on contact page
+  //   if (window.location.pathname === '/contact') {
+  //     const formElement = document.getElementById('form');
+  //     if (formElement) {
+  //       formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //     }
+  //   } else {
+  //     // Navigate to contact page then scroll
+  //     navigate({ to: '/contact' });
+  //     setTimeout(() => {
+  //       const formElement = document.getElementById('form');
+  //       if (formElement) {
+  //         formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //       }
+  //     }, 100);
+  //   }
+  // };
 
   /* ──────────────────────  TOGGLES  ────────────────────── */
   const toggleMobileMenu = () => {
