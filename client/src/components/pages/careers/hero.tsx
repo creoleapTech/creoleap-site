@@ -47,7 +47,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
 
 
   try {
-    const response = await fetch('https://creoleap-site.vercel.app/api/send-email', {
+    const response = await fetch('https://creoleap.com/api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

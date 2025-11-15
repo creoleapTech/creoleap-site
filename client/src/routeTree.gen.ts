@@ -14,6 +14,8 @@ import { Route as OurworksRouteImport } from './routes/ourworks'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as TermsAndConditionRouteImport } from './routes/TermsAndCondition'
+import { Route as PrivacyPolicyRouteImport } from './routes/PrivacyPolicy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LabsIndexRouteImport } from './routes/labs/index'
 import { Route as LabsLabIdRouteImport } from './routes/labs/$labId'
@@ -43,6 +45,16 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsAndConditionRoute = TermsAndConditionRouteImport.update({
+  id: '/TermsAndCondition',
+  path: '/TermsAndCondition',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/PrivacyPolicy',
+  path: '/PrivacyPolicy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -61,6 +73,8 @@ const LabsLabIdRoute = LabsLabIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/PrivacyPolicy': typeof PrivacyPolicyRoute
+  '/TermsAndCondition': typeof TermsAndConditionRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
@@ -71,6 +85,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/PrivacyPolicy': typeof PrivacyPolicyRoute
+  '/TermsAndCondition': typeof TermsAndConditionRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
@@ -82,6 +98,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/PrivacyPolicy': typeof PrivacyPolicyRoute
+  '/TermsAndCondition': typeof TermsAndConditionRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
@@ -94,6 +112,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/PrivacyPolicy'
+    | '/TermsAndCondition'
     | '/about'
     | '/careers'
     | '/contact'
@@ -104,6 +124,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/PrivacyPolicy'
+    | '/TermsAndCondition'
     | '/about'
     | '/careers'
     | '/contact'
@@ -114,6 +136,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/PrivacyPolicy'
+    | '/TermsAndCondition'
     | '/about'
     | '/careers'
     | '/contact'
@@ -125,6 +149,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsAndConditionRoute: typeof TermsAndConditionRoute
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
@@ -171,6 +197,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/TermsAndCondition': {
+      id: '/TermsAndCondition'
+      path: '/TermsAndCondition'
+      fullPath: '/TermsAndCondition'
+      preLoaderRoute: typeof TermsAndConditionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/PrivacyPolicy': {
+      id: '/PrivacyPolicy'
+      path: '/PrivacyPolicy'
+      fullPath: '/PrivacyPolicy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -197,6 +237,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsAndConditionRoute: TermsAndConditionRoute,
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,

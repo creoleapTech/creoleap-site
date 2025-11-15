@@ -142,7 +142,7 @@ export default function WhoWeAre() {
                   <img 
                     src={image.src} 
                     alt={image.alt}
-                    className="w-full h-full object-contain lg:object-cover"
+                    className="w-full h-full object-cover"
                   />
                   {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                     <h3 className="text-white text-xl lg:text-2xl font-bold mb-2">

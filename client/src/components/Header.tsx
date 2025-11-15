@@ -15,11 +15,11 @@ export default function Header() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);   // <-- NEW
 
   const services = [
-    { name: "Bal Vatika Lab", path: "/labs/bal-vatika" },
     { name: "STEM & Robotics Lab", path: "/labs/stem-robotics" },
     { name: "AI & IoT Lab", path: "/labs/ai-iot" },
     { name: "ATAL Tinkering Lab", path: "/labs/atal" },
     { name: "ICT Lab", path: "/labs/ict" },
+     { name: "Bal Vatika Lab", path: "/labs/bal-vatika" },
   ];
 
   const programs = {

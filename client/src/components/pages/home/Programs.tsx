@@ -233,7 +233,7 @@ const Programs = () => {
   };
 
   return (
-    <div ref={containerRef} className=" bg-gradient-to-b py-20 from-gray-50 to-indigo-50 flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div ref={containerRef} className=" bg-gradient-to-b lg:py-20 py-5 md:py-10 from-gray-50 to-indigo-50 flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Morphing Background */}
       <div ref={morphingShapeRef} className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-3xl"></div>
 
@@ -256,7 +256,7 @@ const Programs = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-20">
         {/* Left: Content */}
-        <div className="relative h-full flex items-center min-h-[400px]">
+        <div className="relative h-full flex items-center !z-30 min-h-[350px] md:min-h-[400px]">
           {HeroData.map((data, index) => (
             <div key={data.id} className={`flex justify-center ${getSlideClass(index)}`}>
               <div className="text-left space-y-6 slide-in">

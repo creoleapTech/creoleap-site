@@ -23,7 +23,7 @@ export default function Programs() {
   const [faqs, setFaqs] = useState([
     {
       question: "What is the duration of each program?",
-      answer: "Program durations vary from 3-18 months depending on the complexity and depth. School programs typically run 6-12 months, while college programs can extend up to 18 months for comprehensive training.",
+      answer: "Program durations vary from 3-18 months depending on the complexity and depth. School programs typically run full academin year, while college programs can extend up to 18 months for comprehensive training.",
       isOpen: false
     },
     {
@@ -53,7 +53,7 @@ export default function Programs() {
       color: "from-purple-500 to-pink-500",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
       duration: "8-12 Months",
-      level: "Intermediate to Advanced",
+      level: "Biginner to Advanced",
       outcomes: [
         "Build and program AI-driven robots",
         "Implement computer vision systems",
@@ -123,7 +123,7 @@ export default function Programs() {
       features: ["Smart Manufacturing", "Automation", "Data Analytics", "Industry Collaboration", "IIoT", "Digital Twins"],
       color: "from-indigo-500 to-blue-500",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-      duration: "12-18 Months",
+      duration: "15-30 Days",
       level: "Advanced",
       outcomes: [
         "Industry 4.0 technology mastery",
@@ -140,7 +140,7 @@ export default function Programs() {
       features: ["ROS2 Framework", "Real-time Systems", "Navigation Stack", "Industry Certification", "Simulation", "Hardware Integration"],
       color: "from-cyan-500 to-teal-500",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
-      duration: "6-9 Months",
+      duration: "90-180 Days",
       level: "Intermediate to Advanced",
       outcomes: [
         "ROS2 professional certification",
@@ -157,7 +157,7 @@ export default function Programs() {
       features: ["Microcontrollers", "IoT Protocols", "Cloud Integration", "Project Portfolio", "Wireless Communication", "Edge Computing"],
       color: "from-violet-500 to-purple-500",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-      duration: "9-12 Months",
+      duration: "15-30 Days",
       level: "Beginner to Advanced",
       outcomes: [
         "Embedded systems expertise",
@@ -307,7 +307,7 @@ export default function Programs() {
       </section>
 
       {/* Sticky Tabs - Top Right Corner */}
-      <div 
+      {/* <div 
         ref={tabsRef}
         className={`fixed top-4 right-4 transition-all duration-300 ${
           isSticky ? 'opacity-100 translate-y-0 z-50' : 'opacity-0 -translate-y-4 pointer-events-none -z-10'
@@ -343,7 +343,7 @@ export default function Programs() {
             Colleges
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* Floating Button */}
       <div 
@@ -419,9 +419,12 @@ export default function Programs() {
                     <Icon icon={program.icon} className="text-3xl text-white" />
                   </div>
                   <div className="absolute bottom-4 left-4 flex gap-2">
-                    {/* <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {
+                      activeTab!='schools'? <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                       {program.duration}
-                    </span> */}
+                    </span>:<span></span>
+                    }
+                   
                     <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                       {program.level}
                     </span>

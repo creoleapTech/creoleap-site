@@ -156,7 +156,7 @@ const features: Feature[] = [
         </div>
 
         {/* Circular Layout */}
-        <div className="relative flex justify-center -mt-12">
+        <div className="relative flex justify-center md:-mt-12  ">
           <div
             className="relative"
             style={{
