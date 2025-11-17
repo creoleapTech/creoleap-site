@@ -239,13 +239,19 @@ const Contact = () => {
     console.log('Particle animations initialized');
   };
 
-  const services = [
-    "Robotics Labs",
-    "STEM Lab",
-    "ATAL Tinkering Lab",
-    "Electronic Labs",
-    "Workshops"
-  ];
+const services = [
+  "STEM & Robotics Lab",
+  "Composite Skill Lab",
+  "Bal Vatika Labs",
+  "ATAL Tinkering Labs",
+  "ICT Labs",
+"AI Integrated Robotics",
+"AI Integrated Electronics",
+"Industry 4.0 Readiness Program",
+"ROS2 Certification",
+"Embedded System & IoT Certification",
+  "Career Guidance Program"
+];
 
   return (
     <div id='form' ref={containerRef} className="bg-gradient-to-br from-[#080A25] to-[#0a015a] p-4 sm:p-6 md:p-8 lg:p-12 text-white relative overflow-hidden min-h-screen">

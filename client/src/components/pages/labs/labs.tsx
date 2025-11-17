@@ -90,25 +90,25 @@ useEffect(() => {
       bgColor: 'from-blue-50 to-cyan-50',
        img:"/images/lab2.png"
     },
-    {
-      id: 'ai-iot',
-      title: 'AI & IoT Labs',
-      subtitle: 'Future Technology Integration Center',
-      description: 'Position your school at the forefront of technological advancement with our AI and IoT labs. Students learn machine learning, artificial intelligence, and connected device programming.',
-      features: [
-        'Machine Learning development environments',
-        'AI model training with TensorFlow and PyTorch',
-        'Smart home automation kits and sensors',
-        'Computer vision and image processing tools',
-        'Cloud computing and data analytics platforms',
-        'Industry partnerships and certification programs'
-      ],
-      benefits: 'Prepare students for Industry 4.0 careers with practical AI/ML skills, data science exposure, and understanding of intelligent systems.',
-      stats: { schools: '180+', students: '25K+', satisfaction: '96%' },
-      color: 'from-purple-600 to-indigo-600',
-      bgColor: 'from-purple-50 to-indigo-50',
-    img:"/images/lab6.png"
-    },
+  {
+  id: 'composite-skill',
+  title: 'Composite Skill Lab',
+  subtitle: 'Multi-Disciplinary Innovation Hub',
+  description: 'Equip your school with a cutting-edge Composite Skill Lab that integrates diverse technical and creative domains. Students gain hands-on experience in fabrication, design, electronics, and sustainable material engineering.',
+  features: [
+    'Advanced composite material workstations',
+    '3D printing and CNC machining tools',
+    'Electronic prototyping kits with Arduino & Raspberry Pi',
+    'Sustainable design and eco-material testing rigs',
+    'CAD/CAM software suites (Fusion 360, SolidWorks)',
+    'Industry-aligned certification and project mentorship'
+  ],
+  benefits: 'Empower students with versatile Industry 4.0-ready skills in advanced manufacturing, product design, and interdisciplinary innovation for future engineering and entrepreneurial careers.',
+  stats: { schools: '150+', students: '20K+', satisfaction: '95%' },
+  color: 'from-teal-600 to-cyan-600',
+  bgColor: 'from-teal-50 to-cyan-50',
+  img: "/images/lab-composite.png"
+},
     {
       id: 'atal',
       title: 'ATAL Tinkering Labs',

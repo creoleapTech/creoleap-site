@@ -175,8 +175,11 @@ const particlesRef = useRef<(HTMLDivElement | null)[]>([]);
             <h3 className="text-lg sm:text-xl font-semibold mb-4 text-center md:text-left">AI Labs</h3>
             <ul className="space-y-2 text-center md:text-left">
               <li><a href="/labs/stem-robotics" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">STEM & Robotics Lab</a></li>
-              <li><a href="/labs/ai-iot" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">AI & IoT Lab</a></li>
-              <li><a href="/labs/atal" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">ATAL Tinkering Lab</a></li>
+<li>
+  <a href="/labs/composite-skill" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
+    Composite Skill Lab
+  </a>
+</li>              <li><a href="/labs/atal" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">ATAL Tinkering Lab</a></li>
               <li><a href="/labs/ict" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">ICT Lab</a></li>
               <li><a href="/labs/bal-vatika" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">Bal Vatika Lab</a></li>
             </ul>

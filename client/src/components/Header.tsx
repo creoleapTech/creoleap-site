@@ -16,7 +16,7 @@ export default function Header() {
 
   const services = [
     { name: "STEM & Robotics Lab", path: "/labs/stem-robotics" },
-    { name: "AI & IoT Lab", path: "/labs/ai-iot" },
+{ name: "Composite Skill Lab", path: "/labs/composite-skill" },
     { name: "ATAL Tinkering Lab", path: "/labs/atal" },
     { name: "ICT Lab", path: "/labs/ict" },
      { name: "Bal Vatika Lab", path: "/labs/bal-vatika" },
