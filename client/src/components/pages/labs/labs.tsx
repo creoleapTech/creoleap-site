@@ -52,26 +52,7 @@ useEffect(() => {
 }, []);
 
   const labs = [
-    {
-      id: 'bal-vatika',
-      title: 'Bal Vatika Labs',
-      subtitle: 'Early Childhood Innovation Center',
-      description: 'Transform early learning with our specially designed Bal Vatika Labs that blend play with foundational STEM concepts. Create a magical learning environment where curiosity meets discovery.',
-      features: [
-        'Age-appropriate robotics kits and building blocks',
-        'Interactive storytelling with AR technology',
-        'Sensory learning stations and activity zones',
-        'Digital literacy through gamified learning',
-        'Safety-certified equipment for young learners',
-        'Teacher training and curriculum integration'
-      ],
-      benefits: 'Develop motor skills, spatial awareness, and problem-solving abilities from ages 3-6, setting the foundation for future innovators.',
-      stats: { schools: '200+', students: '15K+', satisfaction: '98%' },
-      color: 'from-pink-500 to-rose-600',
-      bgColor: 'from-pink-50 to-rose-50',
-      img:"/images/lab8.png"
-    },
-    {
+   {
       id: 'stem-robotics',
       title: 'STEM & Robotics Lab',
       subtitle: '21st Century Skills Development Hub',
@@ -107,8 +88,8 @@ useEffect(() => {
   stats: { schools: '150+', students: '20K+', satisfaction: '95%' },
   color: 'from-teal-600 to-cyan-600',
   bgColor: 'from-teal-50 to-cyan-50',
-  img: "/images/lab-composite.png"
-},
+  img: "/images/lab6.png"
+}, 
     {
       id: 'atal',
       title: 'ATAL Tinkering Labs',
@@ -146,6 +127,26 @@ useEffect(() => {
       color: 'from-green-600 to-emerald-600',
       bgColor: 'from-green-50 to-emerald-50',
       img:"/images/lab7.png"
+    },
+    
+    {
+      id: 'bal-vatika',
+      title: 'Bal Vatika Labs',
+      subtitle: 'Early Childhood Innovation Center',
+      description: 'Transform early learning with our specially designed Bal Vatika Labs that blend play with foundational STEM concepts. Create a magical learning environment where curiosity meets discovery.',
+      features: [
+        'Age-appropriate robotics kits and building blocks',
+        'Interactive storytelling with AR technology',
+        'Sensory learning stations and activity zones',
+        'Digital literacy through gamified learning',
+        'Safety-certified equipment for young learners',
+        'Teacher training and curriculum integration'
+      ],
+      benefits: 'Develop motor skills, spatial awareness, and problem-solving abilities from ages 3-6, setting the foundation for future innovators.',
+      stats: { schools: '200+', students: '15K+', satisfaction: '98%' },
+      color: 'from-pink-500 to-rose-600',
+      bgColor: 'from-pink-50 to-rose-50',
+      img:"/images/lab8.png"
     },
     // {
     //   id: 'ar-vr',
