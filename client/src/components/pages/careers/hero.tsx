@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Icon } from '@iconify/react';
+import { toast } from 'sonner';
 
 export default function CareersPage() {
   const heroRef = useRef(null);
   const formRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     gsap.fromTo(
@@ -19,53 +21,67 @@ export default function CareersPage() {
     );
   }, []);
 
-const handleSubmit = async (e: { preventDefault: () => void; target: {
-  resume: any; name: { value: any; }; email: { value: any; }; phone: { value: any; }; role: { value: any; }; message: { value: any; }; reset: () => void; 
-}; }) => {
-  e.preventDefault();
-    const fileInput = e.target.resume;
-  const file = fileInput.files[0];
-  
- const fileBase64 = await new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
-  const formData = {
-    name: e.target.name.value,
-    email: e.target.email.value,
-    phone: e.target.phone.value,
-    role: e.target.role.value,
-    message: e.target.message.value,
-    resume: {
-      name: file.name,
-      data: fileBase64,
-    },
-  };
-
-
-  try {
-    const response = await fetch('https://creoleap.com/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert('Thank you for applying! We will review your application and get back to you soon.');
-      e.target.reset(); // Reset form
-    } else {
-      throw new Error('Failed to submit application');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const form = e.currentTarget;
+    const fileInput = form.resume as HTMLInputElement;
+    const file = fileInput.files?.[0];
+    
+    if (!file) {
+      toast.error('Please upload your resume');
+      return;
     }
-  } catch (error) {
-    console.error('Error:', error);
-    alert('Something went wrong. Please try again later.');
-  }
-};
+
+    setIsSubmitting(true);
+
+    try {
+      // Convert file to base64
+      const fileBase64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      const formData = {
+        name: (form.elements.namedItem('name') as HTMLInputElement).value,
+        email: (form.elements.namedItem('email') as HTMLInputElement).value,
+        phone: (form.elements.namedItem('phone') as HTMLInputElement).value,
+        role: (form.elements.namedItem('role') as HTMLInputElement).value,
+        message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+        resume: {
+          name: file.name,
+          data: fileBase64,
+        },
+      };
+
+      console.log('Submitting application...', { name: formData.name, email: formData.email });
+
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      console.log('Response:', result);
+
+      if (response.ok) {
+        toast.success('Thank you for applying! We will review your application and get back to you soon.');
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Failed to submit application');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Something went wrong. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -158,14 +174,17 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
           <p className="text-gray-600 text-center mb-8">
             Ready to take the next step? Fill out the form below and let's create the future together.
           </p>
-          <form onSubmit={()=>{handleSubmit}} className="space-y-6">
+          {/* FIX 1: Remove arrow function wrapper, just use handleSubmit directly */}
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-gray-600 font-medium mb-2">
                 Full Name
               </label>
+              {/* FIX 2: Add name attribute to all inputs */}
               <input
                 type="text"
                 id="name"
+                name="name"
                 required
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
                 placeholder="John Doe"
@@ -178,6 +197,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
               <input
                 type="email"
                 id="email"
+                name="email"
                 required
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
                 placeholder="john@example.com"
@@ -190,6 +210,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
               <input
                 type="tel"
                 id="phone"
+                name="phone"
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
                 placeholder="+91 98765 43210"
               />
@@ -201,6 +222,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
               <input
                 type="text"
                 id="role"
+                name="role"
                 required
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
                 placeholder="E.g., Educator, Developer, Designer"
@@ -213,6 +235,7 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
               <input
                 type="file"
                 id="resume"
+                name="resume"
                 accept=".pdf"
                 required
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800
@@ -228,7 +251,8 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
               </label>
               <textarea
                 id="message"
-              rows={5}
+                name="message"
+                rows={5}
                 required
                 className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
                 placeholder="Tell us about your passion and how you can contribute..."
@@ -236,9 +260,17 @@ const handleSubmit = async (e: { preventDefault: () => void; target: {
             </div>
             <button
               type="submit"
-              className="w-full bg-gradient-to-br from-[#080A25] via-[#080e4a] to-[#0a015a] text-gray-100 py-3 px-6 rounded-lg font-medium transition-colors shadow-lg hover:shadow-xl"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-br from-[#080A25] via-[#080e4a] to-[#0a015a] text-gray-100 py-3 px-6 rounded-lg font-medium transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Submit Application
+              {isSubmitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <Icon icon="mdi:loading" className="animate-spin" width={20} height={20} />
+                  Submitting...
+                </span>
+              ) : (
+                'Submit Application'
+              )}
             </button>
           </form>
         </div>

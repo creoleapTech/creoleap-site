@@ -70,7 +70,7 @@ const Contact = () => {
     try {
       console.log('Sending payload:', payload); // Debug log
 
-      const response = await fetch('https://creoleap.com/api/info-email', {
+      const response = await fetch('/api/info-email', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
