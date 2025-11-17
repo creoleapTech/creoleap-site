@@ -63,52 +63,52 @@ export default function CareersPage() {
   };
 
   // Alternative: Convert PDF to images (more aggressive compression)
-  const convertPDFToImages = async (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
+  // const convertPDFToImages = async (file: File): Promise<string> => {
+  //   return new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
       
-      reader.onload = async () => {
-        try {
-          // Load PDF.js library dynamically
-          const pdfjsLib = (window as any).pdfjsLib;
+  //     reader.onload = async () => {
+  //       try {
+  //         // Load PDF.js library dynamically
+  //         const pdfjsLib = (window as any).pdfjsLib;
           
-          if (!pdfjsLib) {
-            // Fallback to regular base64 if PDF.js not available
-            const result = await compressPDF(file);
-            resolve(result);
-            return;
-          }
+  //         if (!pdfjsLib) {
+  //           // Fallback to regular base64 if PDF.js not available
+  //           const result = await compressPDF(file);
+  //           resolve(result);
+  //           return;
+  //         }
           
-          const typedarray = new Uint8Array(reader.result as ArrayBuffer);
-          const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
+  //         const typedarray = new Uint8Array(reader.result as ArrayBuffer);
+  //         const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
           
-          // Render first page only to reduce size
-          const page = await pdf.getPage(1);
-          const viewport = page.getViewport({ scale: 1.5 });
+  //         // Render first page only to reduce size
+  //         const page = await pdf.getPage(1);
+  //         const viewport = page.getViewport({ scale: 1.5 });
           
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
+  //         const canvas = document.createElement('canvas');
+  //         const context = canvas.getContext('2d');
+  //         canvas.height = viewport.height;
+  //         canvas.width = viewport.width;
           
-          await page.render({
-            canvasContext: context,
-            viewport: viewport
-          }).promise;
+  //         await page.render({
+  //           canvasContext: context,
+  //           viewport: viewport
+  //         }).promise;
           
-          // Convert canvas to compressed JPEG
-          const compressedImage = canvas.toDataURL('image/jpeg', 0.7); // 70% quality
-          resolve(compressedImage);
+  //         // Convert canvas to compressed JPEG
+  //         const compressedImage = canvas.toDataURL('image/jpeg', 0.7); // 70% quality
+  //         resolve(compressedImage);
           
-        } catch (error) {
-          reject(error);
-        }
-      };
+  //       } catch (error) {
+  //         reject(error);
+  //       }
+  //     };
       
-      reader.onerror = reject;
-      reader.readAsArrayBuffer(file);
-    });
-  };
+  //     reader.onerror = reject;
+  //     reader.readAsArrayBuffer(file);
+  //   });
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
