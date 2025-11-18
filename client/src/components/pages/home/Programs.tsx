@@ -70,7 +70,7 @@ const Programs = () => {
       subtitle: "Robot Operating System Mastery",
       description: "Hands-on training and certification on the Robot Operating System (ROS). Learn robotics middleware, sensor integration, motion planning, and control for industrial and research applications.",
       features: ["ROS Basics & Setup", "Sensor Integration", "Motion Planning", "Real-World Projects"],
-      image: "/images/ros2.png"
+      image: "/images/ros.png"
     }
   ];
 

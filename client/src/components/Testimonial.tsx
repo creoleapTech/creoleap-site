@@ -106,7 +106,7 @@ const Testimonials = () => {
   }, [isPaused, testimonials.length]);
 
   return (
-    <div className="md:py-16 py-10 px-4 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 overflow-hidden">
+    <div className="md:py-16 py-5 px-4 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 overflow-hidden">
       <div className="container mx-auto max-w-7xl mb-8">
         <div className="text-center">
           <h2 className="lg:text-5xl md:text-3xl text-xl pb-2 font-bold bg-gradient-to-bl from-[#101447] to-[#1201a9] bg-clip-text text-transparent">
@@ -187,12 +187,12 @@ const Testimonials = () => {
         </div>
 
         {/* Pause Indicator */}
-        {isPaused && (
+        {/* {isPaused && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/75 text-white px-4 py-2 rounded-full text-sm font-medium z-20 flex items-center gap-2 backdrop-blur-sm">
             <Icon icon="mdi:pause-circle" className="text-lg" />
             Paused - Hover to explore
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
