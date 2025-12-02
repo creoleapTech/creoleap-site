@@ -9,17 +9,18 @@ export default function Header() {
   const [schoolsSubMenuOpen, setSchoolsSubMenuOpen] = useState(false);
   const [collegesSubMenuOpen, setCollegesSubMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-//  const navigate = useNavigate();
+  //  const navigate = useNavigate();
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const programDropdownRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);   // <-- NEW
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);  // Toggle button ref
 
   const services = [
     { name: "STEM & Robotics Lab", path: "/labs/stem-robotics" },
-{ name: "Composite Skill Lab", path: "/labs/composite-skill" },
+    { name: "Composite Skill Lab", path: "/labs/composite-skill" },
     { name: "ATAL Tinkering Lab", path: "/labs/atal" },
     { name: "ICT Lab", path: "/labs/ict" },
-     { name: "Bal Vatika Lab", path: "/labs/bal-vatika" },
+    { name: "Bal Vatika Lab", path: "/labs/bal-vatika" },
   ];
 
   const programs = {
@@ -70,6 +71,15 @@ export default function Header() {
     if (!mobileMenuOpen) return;
 
     const handler = (e: MouseEvent) => {
+      // Don't close if clicking the toggle button itself
+      if (
+        mobileToggleRef.current &&
+        mobileToggleRef.current.contains(e.target as Node)
+      ) {
+        return;
+      }
+
+      // Close if clicking outside the menu
       if (
         mobileMenuRef.current &&
         !mobileMenuRef.current.contains(e.target as Node)
@@ -89,11 +99,11 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-/* ──────────────────────  BOOK DEMO HANDLER  ────────────────────── */
+  /* ──────────────────────  BOOK DEMO HANDLER  ────────────────────── */
   // const handleBookDemo = (e: React.MouseEvent<HTMLAnchorElement>) => {
   //   e.preventDefault();
   //   closeAll(); // Close mobile menu if open
-    
+
   //   // Check if already on contact page
   //   if (window.location.pathname === '/contact') {
   //     const formElement = document.getElementById('form');
@@ -143,9 +153,8 @@ export default function Header() {
       <div className="bg-[linear-gradient(to_right,white_50%,#0a015a_50%)] shadow-2xl relative">
         {/* ──────  TOP CONTACT BAR  ────── */}
         <div
-          className={`bg-gradient-to-br from-[#080A25] to-[#0a015a] rounded-bl-full text-white text-sm py-3 hidden md:block transition-all ${
-            isScrolled ? 'opacity-0 h-0 py-0 overflow-hidden' : 'opacity-100'
-          }`}
+          className={`bg-gradient-to-br from-[#080A25] to-[#0a015a] rounded-bl-full text-white text-sm py-3 hidden md:block transition-all ${isScrolled ? 'opacity-0 h-0 py-0 overflow-hidden' : 'opacity-100'
+            }`}
         >
           <div className="container max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center px-5">
             {/* phone / mail */}
@@ -172,7 +181,7 @@ export default function Header() {
             {/* social */}
             <div className="flex items-center space-x-4">
               <span className="text-sm">Follow Us:</span>
-         <div className="flex space-x-3">
+              <div className="flex space-x-3">
                 <a href="https://www.linkedin.com/company/creoleap/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:linkedin" width="16" height="16" />
                 </a>
@@ -182,11 +191,11 @@ export default function Header() {
                 <a href="https://www.facebook.com/share/1A4a8Az6fb/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:facebook" width="16" height="16" />
                 </a>
-                <a  href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+                <a href="https://wa.me/9363208701" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="mdi:whatsapp" width="16" height="16" />
                 </a>
-                
-                    <a href="https://x.com/CreoleapTech" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
+
+                <a href="https://x.com/CreoleapTech" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-[#FF6B6B] transition-colors">
                   <Icon icon="prime:twitter" width="12" height="12" />
                 </a>
               </div>
@@ -196,9 +205,8 @@ export default function Header() {
 
         {/* ──────  MAIN NAV (sticky)  ────── */}
         <nav
-          className={`bg-white shadow-lg transition-all duration-1000 ${
-            isScrolled ? 'fixed top-0 left-0 right-0 z-50' : 'relative lg:rounded-tr-full'
-          }`}
+          className={`bg-white shadow-lg transition-all duration-1000 ${isScrolled ? 'fixed top-0 left-0 right-0 z-50' : 'relative lg:rounded-tr-full'
+            }`}
         >
           <div className="container mx-auto max-w-7xl px-5 lg:px-8 xl:px-5">
             <div className="flex justify-between items-center">
@@ -321,7 +329,7 @@ export default function Header() {
               </div>
 
               {/* MOBILE TOGGLE */}
-              <button className="lg:hidden text-gray-700 py-4" onClick={toggleMobileMenu}>
+              <button ref={mobileToggleRef} className="lg:hidden text-gray-700 py-4" onClick={toggleMobileMenu}>
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {mobileMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />

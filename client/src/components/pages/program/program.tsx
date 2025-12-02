@@ -6,12 +6,12 @@ import Testimonials from '@/components/Testimonial';
 export default function Programs() {
   type ProgramRefs = Record<string, HTMLDivElement | null>;
 
-  const searchParams = useSearch({ from: '__root__' }) as { 
-    tag?: 'schools' | 'colleges'; 
-    id?: string; 
+  const searchParams = useSearch({ from: '__root__' }) as {
+    tag?: 'schools' | 'colleges';
+    id?: string;
   };
   const [activeTab, setActiveTab] = useState('schools');
-  
+
   const [, setIsSticky] = useState(false);
   const [showFloatingButton, setShowFloatingButton] = useState(false);
   const heroSectionRef = useRef<HTMLDivElement | null>(null);
@@ -178,7 +178,7 @@ export default function Programs() {
 
     if (tag && (tag === 'schools' || tag === 'colleges')) {
       setActiveTab(tag);
-      
+
       // Wait for state update and DOM render, then scroll
       setTimeout(() => {
         if (id && programRefs.current[id]) {
@@ -186,7 +186,7 @@ export default function Programs() {
             behavior: 'smooth',
             block: 'center'
           });
-          
+
           // Add highlight effect
           const element = programRefs.current[id];
           if (element) {
@@ -215,13 +215,13 @@ export default function Programs() {
       const programsSectionTop = programsSectionRef.current.getBoundingClientRect().top;
       const programsSectionBottom = programsSectionRef.current.getBoundingClientRect().bottom;
       const benefitsSectionTop = benefitsSectionRef.current.getBoundingClientRect().top;
-      
+
       // Show sticky tabs when main tabs are scrolled out of view AND programs section is visible
       // AND benefits section is not yet reached
       const isMainTabsVisible = mainTabsBottom > 0;
       const isProgramsSectionVisible = programsSectionTop <= window.innerHeight && programsSectionBottom >= 0;
       const isBenefitsSectionReached = benefitsSectionTop <= window.innerHeight;
-      
+
       // Sticky tabs should show only when:
       // - Main tabs are not visible AND
       // - Programs section is visible AND
@@ -249,7 +249,7 @@ export default function Programs() {
   const handleTabChange = (tab: SetStateAction<string>) => {
     setActiveTab(tab);
     setTimeout(() => {
-      programsSectionRef.current?.scrollIntoView({ 
+      programsSectionRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -262,13 +262,13 @@ export default function Programs() {
       <section ref={heroSectionRef} className="relative py-5 bg-gradient-to-br from-[#080A25] via-[#080e4a] to-[#0a015a] text-white overflow-hidden">
         <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500 rounded-full -translate-y-36 translate-x-36 opacity-20 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-800 rounded-full translate-y-48 -translate-x-48 opacity-20 blur-3xl"></div>
-        
+
         <div className="absolute z-20 inset-0 overflow-hidden">
           <div className="absolute w-80 h-80 bg-blue-400 rounded-full opacity-10 -top-40 -right-40"></div>
           <div className="absolute w-60 h-60 bg-purple-500 rounded-full opacity-30 -bottom-30 -left-20"></div>
           <div className="absolute w-40 h-40 bg-indigo-400 rounded-full opacity-10 top-1/2 left-1/3"></div>
         </div>
-        
+
         <div className="relative py-20 px-4">
           <div className="container mx-auto text-center relative z-30">
             <h1 className="text-5xl lg:text-7xl font-bold pb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -277,27 +277,25 @@ export default function Programs() {
             <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
               Transforming Education Through Innovation and Technology - Empowering the Next Generation of Innovators
             </p>
-            
+
             {/* Main Tabs in Hero Section */}
             <div ref={mainTabsRef} className="flex justify-center gap-4 max-w-md mx-auto mt-12 relative z-30">
               <button
                 onClick={() => handleTabChange('schools')}
-                className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${
-                  activeTab === 'schools'
+                className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'schools'
                     ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
                     : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-                }`}
+                  }`}
               >
                 <Icon icon="mdi:school" className="text-xl" />
                 Schools
               </button>
               <button
                 onClick={() => handleTabChange('colleges')}
-                className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${
-                  activeTab === 'colleges'
+                className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'colleges'
                     ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
                     : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-                }`}
+                  }`}
               >
                 <Icon icon="mdi:domain" className="text-xl" />
                 Colleges
@@ -347,19 +345,17 @@ export default function Programs() {
       </div> */}
 
       {/* Floating Button */}
-      <div 
-        className={`fixed top-1/2 right-6 transition-all duration-300 ${
-          showFloatingButton ? 'opacity-100 translate-y-0 z-50' : 'opacity-0 translate-y-4 pointer-events-none -z-10'
-        }`}
+      <div
+        className={`fixed top-1/2 right-6 transition-all duration-300 ${showFloatingButton ? 'opacity-100 translate-y-0 z-50' : 'opacity-0 translate-y-4 pointer-events-none -z-10'
+          }`}
       >
         <div className="flex flex-col gap-2 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-gray-200 p-2">
           <button
             onClick={() => handleTabChange('schools')}
-            className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${
-              activeTab === 'schools'
+            className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${activeTab === 'schools'
                 ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
-            }`}
+              }`}
           >
             {activeTab === 'schools' && (
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
@@ -369,11 +365,10 @@ export default function Programs() {
           </button>
           <button
             onClick={() => handleTabChange('colleges')}
-            className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${
-              activeTab === 'colleges'
+            className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${activeTab === 'colleges'
                 ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
-            }`}
+              }`}
           >
             {activeTab === 'colleges' && (
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
@@ -392,7 +387,7 @@ export default function Programs() {
               {activeTab === 'schools' ? 'School Programs' : 'College Programs'}
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              {activeTab === 'schools' 
+              {activeTab === 'schools'
                 ? "Our school programs are designed to ignite curiosity and foster innovation in young minds. Through hands-on learning and cutting-edge technology, we prepare students for the future while making education engaging and relevant."
                 : "Our college programs bridge the gap between academia and industry, providing students with the skills and certifications needed to excel in today's competitive job market."
               }
@@ -404,14 +399,14 @@ export default function Programs() {
             {activePrograms.map((program) => (
               <div
                 key={program.id}
-                ref={(el) => { programRefs.current[program.id] = el; }} 
+                ref={(el) => { programRefs.current[program.id] = el; }}
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                
+
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={program.image} 
+                  <img
+                    src={program.image}
                     alt={program.title}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
@@ -421,11 +416,11 @@ export default function Programs() {
                   </div>
                   <div className="absolute bottom-4 left-4 flex gap-2">
                     {
-                      activeTab!='schools'? <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                      {program.duration}
-                    </span>:<span></span>
+                      activeTab != 'schools' ? <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                        {program.duration}
+                      </span> : <span></span>
                     }
-                   
+
                     <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                       {program.level}
                     </span>
@@ -464,10 +459,20 @@ export default function Programs() {
                     ))}
                   </div>
 
-                  <button className={`w-full py-3 px-6 bg-gradient-to-r ${program.color} text-white font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2`}>
-                    Learn More
-                    <Icon icon="mdi:arrow-right" className="text-xl" />
-                  </button>
+                  {activeTab === 'colleges' ? (
+                    <a
+                      href={`/program/${program.id}`}
+                      className={`w-full py-3 px-6 bg-gradient-to-r ${program.color} text-white font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2`}
+                    >
+                      Learn More
+                      <Icon icon="mdi:arrow-right" className="text-xl" />
+                    </a>
+                  ) : (
+                    <button className={`w-full py-3 px-6 bg-gradient-to-r ${program.color} text-white font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2`}>
+                      Learn More
+                      <Icon icon="mdi:arrow-right" className="text-xl" />
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
@@ -486,7 +491,7 @@ export default function Programs() {
               We provide comprehensive solutions that transform educational institutions and empower students
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -545,11 +550,11 @@ export default function Programs() {
               Get answers to common questions about our programs
             </p>
           </div>
-          
+
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200"
               >
                 <button
@@ -565,17 +570,15 @@ export default function Programs() {
                   <h3 className="text-xl font-semibold text-gray-800 pr-4">
                     {faq.question}
                   </h3>
-                  <Icon 
-                    icon={faq.isOpen ? "mdi:chevron-up" : "mdi:chevron-down"} 
-                    className={`text-2xl text-gray-600 transition-transform duration-300 flex-shrink-0 ${
-                      faq.isOpen ? 'text-blue-600' : ''
-                    }`}
+                  <Icon
+                    icon={faq.isOpen ? "mdi:chevron-up" : "mdi:chevron-down"}
+                    className={`text-2xl text-gray-600 transition-transform duration-300 flex-shrink-0 ${faq.isOpen ? 'text-blue-600' : ''
+                      }`}
                   />
                 </button>
-                
-                <div className={`transition-all duration-300 ease-in-out ${
-                  faq.isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                } overflow-hidden`}>
+
+                <div className={`transition-all duration-300 ease-in-out ${faq.isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  } overflow-hidden`}>
                   <div className="px-6 pb-4">
                     <div className="border-t border-gray-200 pt-4">
                       <p className="text-gray-600 leading-relaxed">

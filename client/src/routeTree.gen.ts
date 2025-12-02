@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as OurworksRouteImport } from './routes/ourworks'
+import { Route as Industry40RouteImport } from './routes/industry40'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
@@ -18,6 +19,7 @@ import { Route as TermsAndConditionRouteImport } from './routes/TermsAndConditio
 import { Route as PrivacyPolicyRouteImport } from './routes/PrivacyPolicy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LabsIndexRouteImport } from './routes/labs/index'
+import { Route as ProgramProgramIdRouteImport } from './routes/program.$programId'
 import { Route as LabsLabIdRouteImport } from './routes/labs/$labId'
 
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -28,6 +30,11 @@ const ProgramsRoute = ProgramsRouteImport.update({
 const OurworksRoute = OurworksRouteImport.update({
   id: '/ourworks',
   path: '/ourworks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Industry40Route = Industry40RouteImport.update({
+  id: '/industry40',
+  path: '/industry40',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -65,6 +72,11 @@ const LabsIndexRoute = LabsIndexRouteImport.update({
   path: '/labs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramProgramIdRoute = ProgramProgramIdRouteImport.update({
+  id: '/program/$programId',
+  path: '/program/$programId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LabsLabIdRoute = LabsLabIdRouteImport.update({
   id: '/labs/$labId',
   path: '/labs/$labId',
@@ -78,9 +90,11 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/industry40': typeof Industry40Route
   '/ourworks': typeof OurworksRoute
   '/programs': typeof ProgramsRoute
   '/labs/$labId': typeof LabsLabIdRoute
+  '/program/$programId': typeof ProgramProgramIdRoute
   '/labs': typeof LabsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -90,9 +104,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/industry40': typeof Industry40Route
   '/ourworks': typeof OurworksRoute
   '/programs': typeof ProgramsRoute
   '/labs/$labId': typeof LabsLabIdRoute
+  '/program/$programId': typeof ProgramProgramIdRoute
   '/labs': typeof LabsIndexRoute
 }
 export interface FileRoutesById {
@@ -103,9 +119,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/industry40': typeof Industry40Route
   '/ourworks': typeof OurworksRoute
   '/programs': typeof ProgramsRoute
   '/labs/$labId': typeof LabsLabIdRoute
+  '/program/$programId': typeof ProgramProgramIdRoute
   '/labs/': typeof LabsIndexRoute
 }
 export interface FileRouteTypes {
@@ -117,9 +135,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/industry40'
     | '/ourworks'
     | '/programs'
     | '/labs/$labId'
+    | '/program/$programId'
     | '/labs'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -129,9 +149,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/industry40'
     | '/ourworks'
     | '/programs'
     | '/labs/$labId'
+    | '/program/$programId'
     | '/labs'
   id:
     | '__root__'
@@ -141,9 +163,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/contact'
+    | '/industry40'
     | '/ourworks'
     | '/programs'
     | '/labs/$labId'
+    | '/program/$programId'
     | '/labs/'
   fileRoutesById: FileRoutesById
 }
@@ -154,9 +178,11 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  Industry40Route: typeof Industry40Route
   OurworksRoute: typeof OurworksRoute
   ProgramsRoute: typeof ProgramsRoute
   LabsLabIdRoute: typeof LabsLabIdRoute
+  ProgramProgramIdRoute: typeof ProgramProgramIdRoute
   LabsIndexRoute: typeof LabsIndexRoute
 }
 
@@ -174,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/ourworks'
       fullPath: '/ourworks'
       preLoaderRoute: typeof OurworksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industry40': {
+      id: '/industry40'
+      path: '/industry40'
+      fullPath: '/industry40'
+      preLoaderRoute: typeof Industry40RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -225,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/program/$programId': {
+      id: '/program/$programId'
+      path: '/program/$programId'
+      fullPath: '/program/$programId'
+      preLoaderRoute: typeof ProgramProgramIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/labs/$labId': {
       id: '/labs/$labId'
       path: '/labs/$labId'
@@ -242,9 +282,11 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  Industry40Route: Industry40Route,
   OurworksRoute: OurworksRoute,
   ProgramsRoute: ProgramsRoute,
   LabsLabIdRoute: LabsLabIdRoute,
+  ProgramProgramIdRoute: ProgramProgramIdRoute,
   LabsIndexRoute: LabsIndexRoute,
 }
 export const routeTree = rootRouteImport

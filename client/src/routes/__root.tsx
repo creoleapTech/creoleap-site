@@ -11,7 +11,7 @@ export const Route = createRootRoute({
         expand={false}
         closeButton
       />
-          <Header />
+        <Header />
         <Outlet />
     </>
   ),
