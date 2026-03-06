@@ -24,6 +24,16 @@ const Partners = () => {
       logo: "/images/MM-logo.png",
       category: "Academic Partner"
     },
+    {
+      name: "DMI Engineering College, Aralvaimozhi, Kanyakumari",
+      logo: "/images/dmiLogo.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "Lourdes Matha College of Science & Technology",
+      logo: "/images/loordeLogo1.png",
+      category: "Academic Partner"
+    },
   ];
 
   // Triple the partners for seamless infinite scroll
@@ -79,7 +89,7 @@ const Partners = () => {
 
         {/* Scrolling Track */}
         <div className="overflow-hidden lg:py-6 ">
-          <div 
+          <div
             ref={scrollRef}
             className="flex md:gap-8 gap-3"
             style={{ width: 'fit-content' }}
@@ -92,7 +102,7 @@ const Partners = () => {
                 <div className="relative transition-all duration-500 overflow-hidden  transform hover:-translate-y-2 hover:scale-105">
                   {/* Gradient Top Border */}
                   {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
-                  
+
                   {/* Category Badge */}
                   {/* <div className="absolute top-4 right-4 z-10">
                     <span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -101,16 +111,20 @@ const Partners = () => {
                   </div> */}
 
                   {/* Logo Container */}
-                  <div className="md:p-8 p-4 flex flex-col items-center justify-center md:h-48 h-32">
-                    <div className="relative w-full h-24 flex items-center justify-center md:mb-4">
+                  <div className="md:p-10 p-6  flex flex-col items-center justify-center md:h-48 h-32">
+                    <div className="relative w-full  h-24 flex items-center justify-center md:mb-4">
                       {/* Glow Effect */}
                       {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
-                      
+
                       {/* Logo */}
-                      <img 
-                        src={partner.logo} 
+                      <img
+                        src={partner.logo}
                         alt={partner.name}
-                        className="relative max-w-full max-h-full object-contain  transition-all duration-500 drop-shadow-lg"
+                        className={`relative max-w-full max-h-full object-contain transition-all duration-500 drop-shadow-lg
+    ${partner.category === "Academic Partner" && (partner.name.includes("DMI") || partner.name.includes("Lourdes"))
+                            ? "scale-150  group-hover:scale-150"
+                            : ""
+                          }`}
                         onError={(e) => {
                           const img = e.target as HTMLImageElement;
                           img.style.display = 'none';
