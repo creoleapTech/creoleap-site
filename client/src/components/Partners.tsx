@@ -34,6 +34,11 @@ const Partners = () => {
       logo: "/images/loordeLogo1.png",
       category: "Academic Partner"
     },
+    {
+      name: "St. Martins English Medium High School",
+      logo: "/images/stMartinsLogo2.png",
+      category: "Academic Partner"
+    },
   ];
 
   // Triple the partners for seamless infinite scroll
@@ -121,7 +126,7 @@ const Partners = () => {
                         src={partner.logo}
                         alt={partner.name}
                         className={`relative max-w-full max-h-full object-contain transition-all duration-500 drop-shadow-lg
-    ${partner.category === "Academic Partner" && (partner.name.includes("DMI") || partner.name.includes("Lourdes"))
+    ${partner.category === "Academic Partner" && (partner.name.includes("DMI") || partner.name.includes("Lourdes") || partner.name.includes("Martins"))
                             ? "scale-150  group-hover:scale-150"
                             : ""
                           }`}
