@@ -52,7 +52,7 @@ export default function Programs() {
       icon: "mdi:robot",
       features: ["Robot Programming", "Machine Learning", "Sensor Integration", "Autonomous Systems", "Computer Vision", "Path Planning"],
       color: "from-purple-500 to-pink-500",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+      image: "/images/schools/68.png",
       duration: "8-12 Months",
       level: "Biginner to Advanced",
       outcomes: [
@@ -69,7 +69,7 @@ export default function Programs() {
       icon: "mdi:chip",
       features: ["Hands-on Projects", "AI Fundamentals", "Circuit Design", "IoT Integration", "PCB Design", "Sensor Networks"],
       color: "from-blue-500 to-cyan-500",
-      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+      image: "/images/lab5.png",
       duration: "6-12 Months",
       level: "Beginner to Advanced",
       outcomes: [
@@ -86,7 +86,7 @@ export default function Programs() {
       icon: "mdi:book-education",
       features: ["Policy Compliant", "Skill-Based Learning", "Holistic Development", "Modern Pedagogy", "Assessment Tools", "Teacher Training"],
       color: "from-green-500 to-emerald-500",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+      image: "/images/book2.jpeg",
       duration: "Full Academic Year",
       level: "All Levels",
       outcomes: [
@@ -103,7 +103,7 @@ export default function Programs() {
       icon: "mdi:account-school",
       features: ["Professional Development", "Tech Training", "Pedagogical Skills", "Continuous Support", "Classroom Management", "Digital Tools"],
       color: "from-orange-500 to-red-500",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+      image: "/images/schools/67.png",
       duration: "3-6 Months",
       level: "Educators & Faculty",
       outcomes: [
@@ -283,8 +283,8 @@ export default function Programs() {
               <button
                 onClick={() => handleTabChange('schools')}
                 className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'schools'
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                    : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
                   }`}
               >
                 <Icon icon="mdi:school" className="text-xl" />
@@ -293,8 +293,8 @@ export default function Programs() {
               <button
                 onClick={() => handleTabChange('colleges')}
                 className={`flex-1 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 ${activeTab === 'colleges'
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                    : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
                   }`}
               >
                 <Icon icon="mdi:domain" className="text-xl" />
@@ -353,8 +353,8 @@ export default function Programs() {
           <button
             onClick={() => handleTabChange('schools')}
             className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${activeTab === 'schools'
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
-                : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
+              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+              : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
               }`}
           >
             {activeTab === 'schools' && (
@@ -366,8 +366,8 @@ export default function Programs() {
           <button
             onClick={() => handleTabChange('colleges')}
             className={`px-4 py-2 relative rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 min-w-[100px] ${activeTab === 'colleges'
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
-                : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
+              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+              : 'text-gray-700 hover:bg-gray-100 border border-gray-300 bg-white'
               }`}
           >
             {activeTab === 'colleges' && (
@@ -404,7 +404,7 @@ export default function Programs() {
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
 
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-72 overflow-hidden">
                   <img
                     src={program.image}
                     alt={program.title}

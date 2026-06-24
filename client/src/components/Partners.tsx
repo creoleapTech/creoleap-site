@@ -15,18 +15,13 @@ const Partners = () => {
       category: "Academic Partner"
     },
     {
-      name: "Carol Matric Hr Sec School",
-      logo: "/images/carol-logo.png",
-      category: "Academic Partner"
-    },
-    {
-      name: "Meenakshi Matric Hr Sec School",
-      logo: "/images/MM-logo.png",
-      category: "Academic Partner"
-    },
-    {
       name: "DMI Engineering College, Aralvaimozhi, Kanyakumari",
       logo: "/images/dmiLogo.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "Carol Matric Hr Sec School",
+      logo: "/images/carol-logo.png",
       category: "Academic Partner"
     },
     {
@@ -35,8 +30,38 @@ const Partners = () => {
       category: "Academic Partner"
     },
     {
+      name: "Meenakshi Matric Hr Sec School",
+      logo: "/images/MM-logo.png",
+      category: "Academic Partner"
+    },
+    {
       name: "St. Martins English Medium High School",
       logo: "/images/stMartinsLogo2.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "Montfort Matric. Hr. Sec. School, Manjampatti, Manaparai. ",
+      logo: "/images/montfort-logo.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "Montfort School, Anakkara, Idukki. ",
+      logo: "/images/MSA-logo.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "St. Joseph Senior Secondary School, Muttada, Trivandrum ",
+      logo: "/images/muttada-logo.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "Delight Public School, CBSE (senior Secondary), Thoothukudi ",
+      logo: "/images/delight-logo.png",
+      category: "Academic Partner"
+    },
+    {
+      name: "The New John Dewey Matriculation School, Villupuram ",
+      logo: "/images/johndewey-logo.png",
       category: "Academic Partner"
     },
   ];
@@ -117,7 +142,7 @@ const Partners = () => {
 
                   {/* Logo Container */}
                   <div className="md:p-10 p-6  flex flex-col items-center justify-center md:h-48 h-32">
-                    <div className="relative w-full  h-24 flex items-center justify-center md:mb-4">
+                    <div className="relative w-full  md:h-40 h-24 flex items-center justify-center md:mb-4">
                       {/* Glow Effect */}
                       {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
 
