@@ -1,6 +1,6 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ChevronRight, ChevronLeft } from 'lucide-react'
+import { ChevronRight, ChevronLeft } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react';
 
